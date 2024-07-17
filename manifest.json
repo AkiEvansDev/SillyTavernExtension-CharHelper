@@ -1,0 +1,12 @@
+{
+    "display_name": "CharHelper",
+    "loading_order": 1,
+    "requires": [],
+    "optional": [],
+    "js": "dist/index.js",
+    "css": "",
+    "author": "AkiEvans",
+    "version": "1.0.0",
+    "homePage": "https://github.com/AkiEvansDev/SillyTavern-CharHelper",
+    "auto_update": true
+}
