@@ -1,0 +1,44 @@
+
+
+.charHelperDataDescription {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+}
+
+@media (min-width: 1000px) {
+    #charHelperPanelHolder {
+        width: calc(var(--sheldWidth) - 2%);
+    }
+
+    .charHelperDataNumber {
+        width: 20% !important;
+    }
+
+    .charHelperDataSelect {
+        width: 40% !important;
+    }
+}
+
+.charHelperDataSelect > option:disabled {
+    font-size: calc(var(--mainFontSize));
+    font-weight: bold;
+}
+
+.charHelperGroupData {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.charHelperGroupData:has(.charHelperDataNumber), .charHelperGroupData:has(.charHelperDataText) {
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+}
+
+.charHelperSubGroup {
+    margin-left: 1.5em;
+}
+
+.charHelperSubGroup > div > .charHelperGroupData {
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+}

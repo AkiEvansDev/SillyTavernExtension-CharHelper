@@ -1,10 +1,13 @@
 {
-  "name": "extension-template",
+  "name": "extension-char-helper",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "css-loader": "^7.1.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-tabs": "^6.0.2",
+    "style-loader": "^4.0.0"
   },
   "scripts": {
     "build": "webpack --mode production"
