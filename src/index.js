@@ -4,7 +4,6 @@ import App from './App';
 import Settings from './Settings';
 import './styles.css';
 
-// Choose the root container for the extension's main UI
 const rootContainer = document.getElementById('extensions_settings');
 const rootElement = document.createElement('div');
 rootContainer.appendChild(rootElement);
@@ -16,7 +15,6 @@ root.render(
     </React.StrictMode>
 );
 
-// Choose the root container for the extension's main UI
 const buttonContainer = document.getElementById('extensionsMenu');
 const buttonElement = document.createElement('div');
 const iconElement = document.createElement('i');

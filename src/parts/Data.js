@@ -7,7 +7,7 @@ function Data({ stepData, data, onChange }) {
     return (
         <div id={data['id']} class="charHelperGroupData">
             <label for={data['id'] + "-input"}>{data['title']}</label>
-            <p class="charHelperDataDescription"><small id={data['id'] + "-text"}>{data['description'][stepData.save[data['key']]]}</small></p>
+            <p class="charHelperDataDescription"><small id={data['id'] + "-text"}>{data['description'][stepData.save[data['id']]]}</small></p>
             {data['type'] === 'select' &&
                 <Select data={data} onChange={onChange} />
             }

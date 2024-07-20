@@ -1,11 +1,14 @@
 /* global SillyTavern */
+/* global translate */
 import _ from 'lodash';
 import { DEFAULT_TEMPLATE, DEFAULT_RESOURCE } from './data'
 import Helper from './Helper'
+import StepData from './StepData'
 
 const DEFAULT = {
     template: DEFAULT_TEMPLATE,
     resource: DEFAULT_RESOURCE,
+    translate: true,
 };
 
 export const TEMPLATE_KEY_REGEX = /^[\w ]*:/g;
@@ -32,20 +35,26 @@ class StateManager {
     }
 
     static getSteps() {
-        let resource = this.getData('template');
+        let resources = this.getResources();
+        let template = this.getData('template');
         let steps = [];
 
-        Helper.smartSplit(resource, '\n').forEach(function (line) {
+        let index = 0;
+        Helper.smartSplit(template, '\n').forEach(function (line) {
             if (line && line.match(TEMPLATE_KEY_REGEX)) {
                 let split = Helper.smartSplit(line, ':');
                 
                 if (split[1] && split[1].match(TEMPLATE_VALUE_REGEX)) {
-                    steps.push({ title: split[0], description: split[1] });
+                    let data = new StepData(index, { title: split[0], description: split[1] }, resources);
+                    data.setGroups();
+
+                    steps.push(data);
+                    index++;
                 }
             }
         });
 
-        return steps;
+        return { template: template, steps: steps };
     }
 
     static getResources() {
@@ -95,7 +104,7 @@ class StateManager {
                     if (property === 0) {
                         header--;
                     }
-
+                    
                     let split = Helper.smartSplit(line, ':');
                     let value = split[0].substring(2);
 
@@ -114,6 +123,7 @@ class StateManager {
             } 
         });
 
+        console.log(resources);
         return resources;
     }
 }

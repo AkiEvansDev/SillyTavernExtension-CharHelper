@@ -4,7 +4,8 @@ import StateManager from './common/StateManager';
 function Settings() {
     const [template, setTemplate] = useState(StateManager.getData('template'));
     const [resource, setResource] = useState(StateManager.getData('resource'));
-    
+    const [translate, seTranslate] = useState(StateManager.getData('translate'));
+
     const handleChangeTemplate = (event) => {
         setTemplate(event.target.value);
         StateManager.setData('template', event.target.value);
@@ -13,6 +14,11 @@ function Settings() {
     const handleChangeResource = (event) => {
         setResource(event.target.value);
         StateManager.setData('resource', event.target.value);
+    };
+
+    const handleChangeTranslate = (event) => {
+        seTranslate(event.target.value);
+        StateManager.setData('translate', event.target.value);
     };
 
     return (
@@ -27,6 +33,10 @@ function Settings() {
                     <textarea id="char_helper_template" type="text" class="text_pole textarea_compact" rows="5" placeholder="" value={template} onChange={handleChangeTemplate}></textarea>
                     <label for="char_helper_resource" class="checkbox_label" data-i18n="ext_char_helper_resource">Resource</label>
                     <textarea id="char_helper_resource" type="text" class="text_pole textarea_compact" rows="10" placeholder="" value={resource} onChange={handleChangeResource}></textarea>
+                    <label class="checkbox_label" for="char_helper_translate">
+                        <input type="checkbox" id="char_helper_translate" checked={translate} onChange={handleChangeTranslate} />
+                        <span>Translate description</span>
+                    </label>
                 </div>
             </div>
         </div>

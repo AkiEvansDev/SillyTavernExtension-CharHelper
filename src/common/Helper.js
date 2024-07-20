@@ -1,6 +1,6 @@
 class Helper {
     static titleCase(str) {
-        str = str.trim().replace('-', ' ');
+        str = str.trim().replaceAll('-', ' ');
         return this.titleCaseWithChar(str, ' ');
     }
 
@@ -15,11 +15,39 @@ class Helper {
     }
 
     static keyCase(str) {
-        return str.trim().toLowerCase().replace(' ', '-');
+        return str.trim().toLowerCase().replaceAll(' ', '-');
     }
 
     static smartSplit(str, char) {
         return str.split(char).map(x => x.trim());
+    }
+
+    static buildResult(template, steps) {
+        steps.forEach((stepData) => {
+            template = template.replace(stepData.step['description'], stepData.getResult());
+        });
+
+        return this.clearResult(template);
+    }
+
+    static clearResult(str) {
+        while (str.includes('  ')) {
+            str = str.replaceAll('  ', ' ');
+        }
+
+        str = str.replaceAll('{', '');
+        str = str.replaceAll('}', '');
+        str = str.replaceAll('?', '');
+        str = str.replaceAll(', ,', ',');
+        str = str.replaceAll('+ +', '+');
+        str = str.replaceAll(', ;', ';');
+        str = str.replaceAll(',;', ';');
+        str = str.replaceAll('+ ;', ';');
+        str = str.replaceAll('+;', ';');
+        str = str.replaceAll('; ;', ';');
+        str = str.replaceAll(';;', ';');
+
+        return str;
     }
 }
 

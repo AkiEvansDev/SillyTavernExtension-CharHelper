@@ -17,7 +17,7 @@ function Group({ stepData, group, onChange }) {
 
         div.appendChild(document.createElement("hr"))
 
-        onChange(copy, stepData.save[copy['key']]);
+        onChange(copy, stepData.save[copy['id']]);
     }
 
     function removeCopy(data) {
@@ -50,7 +50,6 @@ function Group({ stepData, group, onChange }) {
                     }
                 </>
             ))}
-            <hr></hr>
         </div>
     );
 }
