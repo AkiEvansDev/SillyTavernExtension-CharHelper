@@ -212,10 +212,14 @@ class StepData {
     getItemResult(item) {
         let result = this.save[item['id']];
 
+        if (result.includes('{{') && result.includes('}}')) {
+            result = Helper.hideDoubleCurlyBrace(result);
+        }
+
         if (result === 'none') {
             return '';
         }
-
+        
         if (this.values[result])
             return this.values[result];
 

@@ -29,7 +29,7 @@ function App({ onCloseClicked }) {
 
         let text = Helper.buildResult(data['template'], data['steps']);
 
-        input.rows = text.split('\n').length;
+        input.rows = text.split('\n').length + 1;
         input.value = text;
     }
 

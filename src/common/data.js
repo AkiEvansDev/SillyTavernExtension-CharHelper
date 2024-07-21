@@ -14,15 +14,15 @@ export const DEFAULT_RESOURCE =
 `--appearance
 Face:
 	- custom: {text-custom}:
-	- face: {face-shape} face {text-additional}:
+	- face: {face-shape} face:
 
 Hair:
 	- custom: {text-custom}:
-	- hair: {hair-length?} {hair-structure?} {color} hair {hair-features?} {text-additional}, {hair-style?}:
+	- hair: {hair-length?} {hair-structure?} {color} hair {hair-features?}, {hair-style?}:
 
 Eyes:
 	- custom: {text-custom}:
-	- eyes: {eyes-shape?} {eyes-expression?} {color} eyes {eyes-features?} {text-additional}:
+	- eyes: {eyes-shape?} {eyes-expression?} {color} eyes {eyes-features?}:
 
 Tall:
 	- custom: {text-custom}:
@@ -39,8 +39,8 @@ Boobs:
 --outfit
 Top:
 	- custom: {text-custom}:
-	- shirt: {top-neckline?} {top-sleeve?} {top-fabric?} {color?} shirt:
-	- blouse: {top-neckline?} {top-sleeve?} {top-fabric?} {color?} blouse:
+	- shirt: {top-neckline?} {top-sleeve?} {top-fabric?} {color?} {top-features?} shirt:
+	- blouse: {top-neckline?} {top-sleeve?} {top-fabric?} {color?} {top-features?} blouse:
 	- jacket: {color?} jacket:
 
 Bottom:
@@ -51,7 +51,7 @@ Bottom:
 Full:
 	- custom: {text-custom}:
 	- long dress: {long-dress-neckline?} {color-type?} {color?} long dress:
-	- maid: {color?} maid {maid-type?} dress:
+	- maid: {color?} {maid-type?} maid dress:
 	- tight clothes: tight {color?} clothes:
 	- armored: {color?} armored clothes:
 
@@ -68,12 +68,12 @@ Underwear:
 
 Additional:
 	- custom: {text-custom}:
-	- cape: {color?} cape {text-additional}:
-	- gloves: {gloves-length?} {color?} gloves {text-additional}:
-	- stockings: {stockings-sheerness?} {stockings-pattern?} {stockings-length?} {color?} stockings {stockings-features?}:
-	- choker: {choker-material?} {color?} choker {text-additional}:
+	- cape: {color?} cape:
+	- gloves: {gloves-length?} {color?} gloves:
+	- stockings: {stockings-sheerness?} {stockings-pattern?} {stockings-length?} {color?} stockings:
+	- choker: {choker-material?} {color?} choker:
 	- jewelry: {jewelry-type} {text-additional}:
-	- bare: {bare-type} {text-additional}:
+	- bare: {bare-type}:
 
 --gender
 Gender:
@@ -93,45 +93,44 @@ Ethnicity:
 --color
 Color:
 	- custom: {text-custom}:
-Gold:
+    - gold: #D4AF37:
 	- light gold: #F8E231:
 	- deep gold: #FFD700:
 	- honey gold: #FFC394:
-Orange:
+    - orange: #FFA500:
 	- pastel orange: #FFC2C7:
 	- deep orange: #FF9900:
 	- tangerine orange: #FFA07A:
-Red:
+    - red: #FF0000:
 	- ruby red: #E0115F:
 	- garnet red: #833333:
 	- crimson red: #DC143C:
-Pink:
+    - pink: #FFC0CB:
 	- pastel pink: #FFC5C5:
 	- blush pink: #FF69B4:
 	- fuchsia pink: #C154C1:
-Purple:
+    - purple: #A020F0:
 	- lilac purple: #C9C3E4:
 	- periwinkle purple: #B2E6CE:
 	- deep purple: #6c5ce7:
-Blue:
+    - blue: #0000FF:
 	- sky blue: #87CEEB:
 	- royal blue: #4169E1:
 	- navy blue: #03055B:
-Green:
+    - green: #00FF00:
 	- mint green: #ACFF79:
 	- forest green: #228B22:
 	- lime green: #32CD32:
-Brown:
 	- caramel brown: #F5DEB3:
 	- honey brown: #FFC080:
 	- chocolate brown: #964B00:
-White:
+    - white: #FFFFFF:
 	- ivory white: #FFFFF0:
-Grey:
+    - grey: #AAAAAA:
 	- ash grey: #AAAAAA:
 	- platinum grey: #AAAAAA:
 	- charcoal grey: #AAAAAA:
-Black:
+	- black: #000000:
 	- jet black: #000000:
 	- obsidian black: #000000:
 	- ebony black: #000000:
@@ -174,11 +173,13 @@ Structure:
 	- rough: Coarse, unmanageable hair with a dry, brittle texture that can be prone to tangling or breakage.
 
 Features:
+	- custom: {text-custom}:
 	- tips: with {color} tips:
 	- streaks: with {color} streaks:
 	- gradient: with {color} gradient:
 
 Style:
+Other:
 	- custom: {text-custom}:
 Ponytail:
 	- classic ponytail: A timeless style where the hair is gathered at the nape of the neck, secured with an elastic band, and often left loose at the front.
@@ -199,6 +200,7 @@ Up-Dos:
 
 --eyes
 Shape:
+	- custom: {text-custom}:
 	- almond: Eyes that are elongated and narrow, with a pointed outer corner. This shape is often associated with Asian and Middle Eastern features.
 	- round: Eyes with a circular shape, typically found in people of European and African descent. Round eyes can appear larger and more expressive.
 	- upturned: Eyes with an upward tilt at the outer corner, giving a slightly feline or innocent appearance. This shape is less common but can be seen in some individuals.
@@ -214,6 +216,7 @@ Expression:
 	- calm: Serene, tranquil, and composed, exuding a sense of inner peace and control.
 
 Features:
+	- custom: {text-custom}:
 	- heterochromia: with {color} heterochromia:
 
 --body
@@ -266,6 +269,12 @@ Fabric:
 	- silk: A luxurious, smooth, and lustrous natural protein fiber obtained from silkworm cocoons. Silk is known for its softness, drape, and durability, making it a popular choice for high-end clothing, especially in traditional Asian and European cultures.
 	- cotton: A common, versatile, and breathable natural fiber derived from the cotton plant. Cotton is often used for casual, everyday clothing due to its comfort, affordability, and ease of care. It can range from lightweight, smooth voile to thick, textured denim.
 	- linen: A strong, lightweight, and natural fiber made from the flax plant. Linen is valued for its cooling properties, crisp texture, and classic, timeless look. It's often used for summer clothing, such as dresses, pants, and shirts, as well as home textiles like bedding and curtains.
+
+ Features:
+    - open collar: The top buttons of the shirt are left unfastened, creating a slightly more relaxed and approachable demeanor.
+    - unbuttoned: The shirt is partially opened, revealing the wearer's chest and upper torso. This can be a sign of casualness or a deliberate choice for comfort or style.
+    - untucked: The shirt hangs loose outside the pants, giving a more relaxed and informal look. This style is commonly seen in casual or creative environments.
+    - tucked in: The shirt is securely fastened into the pants, creating a neat and polished appearance. This is often preferred for formal occasions or professional settings.
 
 --skirt
 Length:
@@ -419,7 +428,6 @@ Material:
 
 --jewelry
 Type:
-	- custom: {text-custom}:
 	- earrings: Adornments worn on the ears, such as studs, drops, or dangles. They can be simple or elaborate, featuring different materials and designs.
 	- rings: Circular pieces of jewelry worn on the fingers, often symbolizing commitment or status. Rings can be plain bands or feature gemstones, engravings, or other embellishments.
 

@@ -2,14 +2,11 @@ import React, { useEffect } from 'react';
 import Group from './parts/Group';
 
 function Step({ stepData, next, prev, result }) {
-    useEffect(() => {
-        if (stepData.render === true) {
-            stepData.groups.flatMap(g => g['items']).forEach(function (data) {
-                onChange(data, stepData.save[data['id']], true);
-            });
-            stepData.render = false;
-        }
-    }, []);
+    function initGroups(groups) {
+        groups.flatMap(g => g['items']).forEach(function (data) {
+            onChange(data, stepData.save[data['id']], true);
+        });
+    }
 
     function onChange(data, value, init = false) {
         let container = document.getElementById('charHelperStep-' + stepData.stepIndex + '-container');
@@ -38,6 +35,8 @@ function Step({ stepData, next, prev, result }) {
         stepData.save[data['id']] = value;
 
         if (data['show'] && (value === 'variant' || init)) {
+            stepData.save[data['id']] = 'none';
+
             let target = container.querySelector('#' + data['id']);
             let show = container.querySelector('#' + data['show']);
 
@@ -53,6 +52,7 @@ function Step({ stepData, next, prev, result }) {
         }
 
         if (data['subGroups'] && data['subGroups'].length > 0) {
+            initGroups(data['subGroups']);
             data['subGroups'].forEach(group => {
                 let groupTarget = container.querySelector('#' + group['id']);
 
@@ -64,6 +64,13 @@ function Step({ stepData, next, prev, result }) {
             });
         }
     }
+
+    useEffect(() => {
+        if (stepData.render === true) {
+            initGroups(stepData.groups);
+            stepData.render = false;
+        }
+    }, []);
     
     return (
         <div id={'charHelperStep-' + stepData.stepIndex}>

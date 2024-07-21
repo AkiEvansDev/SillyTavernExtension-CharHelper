@@ -30,7 +30,7 @@ function Description({ id, description, stepData, text }) {
 
     return (
         <div class="charHelperDataDescription">
-            <small id={id + '-text'}>{text}</small>
+            <small id={id + '-text'}>{stepData.descriptions[description + '-' + stepData.save[id]]}</small>
             <small id={id + '-text-translate'}></small>
             <div id={id + '-text-translate-btn'} class="menu_button interactable fa-solid fa-language" style={(text && text.length > 0 ? {} : { display: 'none' })} onClick={() => translate()}></div>
         </div>

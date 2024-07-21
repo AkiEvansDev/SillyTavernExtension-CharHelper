@@ -23,18 +23,34 @@ class Helper {
     }
 
     static buildResult(template, steps) {
+        template = this.hideDoubleCurlyBrace(template);
+
         steps.forEach((stepData) => {
             template = template.replace(stepData.step['template'], stepData.getResult());
         });
 
-        return this.clearResult(template);
+        return this.restoreDoubleCurlyBrace(this.clearResult(template));
+    }
+
+    static hideDoubleCurlyBrace(str) {
+        str = str.replaceAll('{{;', '&[[');
+        str = str.replaceAll('}}', '&]];');
+
+        return str;
+    }
+
+    static restoreDoubleCurlyBrace(str) {
+        str = str.replaceAll('&[[;', '{{');
+        str = str.replaceAll('&]];', '}}');
+
+        return str;
     }
 
     static clearResult(str) {
         while (str.includes('  ')) {
             str = str.replaceAll('  ', ' ');
         }
-
+        
         str = str.replaceAll('{', '');
         str = str.replaceAll('}', '');
         str = str.replaceAll('?', '');
@@ -46,6 +62,7 @@ class Helper {
         str = str.replaceAll('+ ;', ';');
         str = str.replaceAll('+;', ';');
         str = str.replaceAll('; ;', ';');
+        str = str.replaceAll(' ;', ';');
         str = str.replaceAll(';;', ';');
 
         return str;
