@@ -22,6 +22,16 @@ function Settings() {
         StateManager.setData('translate', event.target.value);
     };
 
+    const restoreTemplate = () => {
+        setTemplate(DEFAULT_TEMPLATE);
+        StateManager.setData('template', DEFAULT_TEMPLATE);
+    }
+
+    const restoreResource = () => {
+        setResource(DEFAULT_RESOURCE);
+        StateManager.setData('resource', DEFAULT_RESOURCE);
+    }
+
     return (
         <div class="char_helper_settings">
             <div class="inline-drawer">
@@ -32,12 +42,17 @@ function Settings() {
                 <div class="inline-drawer-content">
                     <label for="char_helper_settings_template" class="title_restorable">
                         <span>Template</span>
-                        <div class="right_menu_button interactable" id="char_helper_settings_template_restore">
+                        <div class="right_menu_button interactable" id="char_helper_settings_template_restore" onClick={restoreTemplate}>
                             <i class="fa-solid fa-clock-rotate-left fa-sm"></i>
                         </div>
                     </label>
                     <textarea id="char_helper_char_helper_settings_template_template" type="text" class="text_pole textarea_compact" rows="5" placeholder="" value={template} onChange={handleChangeTemplate}></textarea>
-                    <label for="char_helper_settings_resource" class="checkbox_label">Resource</label>
+                    <label for="char_helper_settings_resource" class="title_restorable">
+                        <span>Resource</span>
+                        <div class="right_menu_button interactable" id="char_helper_settings_resource_restore" onClick={restoreResource}>
+                            <i class="fa-solid fa-clock-rotate-left fa-sm"></i>
+                        </div>
+                    </label>
                     <textarea id="char_helper_settings_resource" type="text" class="text_pole textarea_compact" rows="10" placeholder="" value={resource} onChange={handleChangeResource}></textarea>
                     <label class="checkbox_label" for="char_helper_translate">
                         <input type="checkbox" id="char_helper_settings_translate" checked={translate} onChange={handleChangeTranslate} />
