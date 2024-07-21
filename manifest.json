@@ -6,7 +6,7 @@
     "js": "dist/index.js",
     "css": "",
     "author": "AkiEvans",
-    "version": "1.0.0",
-    "homePage": "https://github.com/AkiEvansDev/SillyTavern-CharHelper",
+    "version": "1.0.1",
+    "homePage": "https://github.com/AkiEvansDev/SillyTavernExtension-CharHelper",
     "auto_update": true
 }
