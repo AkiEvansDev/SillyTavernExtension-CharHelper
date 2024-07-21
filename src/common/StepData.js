@@ -3,18 +3,19 @@ import StateManager from './StateManager';
 import { TEMPLATE_VALUE_REGEX } from './StateManager'
 
 class StepData {
-    constructor(stepIndex, step, resources) {
+    constructor(stepIndex, step, resources, separator) {
         this.save = [];
         this.groups = [];
 
         this.stepIndex = stepIndex;
         this.step = step;
         this.resources = resources['resources'];
+        this.separator = separator;
         this.values = resources['values'];
         this.descriptions = resources['descriptions'];
         this.translates = {};
 
-        this.render = true;
+        this.render = false;
     }
 
     translate(value) {
@@ -39,7 +40,7 @@ class StepData {
     }
 
     createCopy(group, data) {
-        let copy = this.getData(group, data['copyParam']['id'], data['copyParam']['addNone'], data['copyParam']['variant'], true);
+        let copy = this.getData(group, data['copyParam']['id'], data['copyParam']['replace'], data['copyParam']['addNone'], data['copyParam']['variant'], true);
 
         group['items'].push(copy);
 
@@ -70,14 +71,14 @@ class StepData {
     }
 
     setGroups() {
-        Helper.smartSplit(this.step['template'], ',').forEach((part, index) => {
+        Helper.smartSplit(this.step['template'], this.separator).forEach((part, index) => {
             this.groups.push(this.getGroup(part, 'ch-group-' + this.stepIndex + '-' + index));
         });
     }
     
     getGroup(part, id, copy = false) {
         let group = { id: id, title: part, items: [] };
-
+        
         [...part.match(TEMPLATE_VALUE_REGEX)].forEach((key) => {
             key = key.substring(1, key.length - 1);
 
@@ -85,10 +86,10 @@ class StepData {
                 let keys = Helper.smartSplit(key, '?').filter(k => k);
 
                 if (keys.length === 1) {
-                    group['items'].push(this.getData(group, keys[0], true, false, copy));
+                    group['items'].push(this.getData(group, keys[0], '{' + keys[0] + '?}', true, false, copy));
                 } else if (keys.length === 2) {
-                    let data1 = this.getData(group, keys[0], true, true, copy);
-                    let data2 = this.getData(group, keys[1], true, true, copy);
+                    let data1 = this.getData(group, keys[0], '{' + keys[0] + '?', true, true, copy);
+                    let data2 = this.getData(group, keys[1], keys[1] + '}', true, true, copy);
 
                     data1['show'] = data2['id'];
                     data2['show'] = data1['id'];
@@ -97,20 +98,19 @@ class StepData {
                     group['items'].push(data1);
                 }
             } else {
-                group['items'].push(this.getData(group, key, false, false, copy));
+                group['items'].push(this.getData(group, key, '{' + key + '}', false, false, copy));
             }
         });
 
         return group;
     }
 
-    getData(group, key, addNone, variant, copy = false) {
+    getData(group, key, replace, addNone, variant, copy = false) {
         let copyParam = null;
-        let replace = key;
 
         if (key.endsWith('*')) {
             key = key.substring(0, key.length - 1);
-            copyParam = { id: key, addNone: addNone, variant: variant };
+            copyParam = { id: key, addNone: addNone, replace: replace, variant: variant };
         }
         
         let resource = this.resources[key];
@@ -182,25 +182,24 @@ class StepData {
             result = result.replace(group['title'], this.getGroupResult(group));
         });
 
-        return Helper.clearResult(result);
+        return result;
     }
 
     getGroupResult(group) {
         let result = group['title'];
 
         group['items'].forEach((item) => {
-            if (item['replace'].endsWith('*')) {
+            if (item['replace'].includes('*')) {
                 let copyId = item['id'] + '-copy';
                 let copies = group['items'].filter(i => i['id'].startsWith(copyId));
 
-                let template = item['replace'].substring(0, item['replace'].length - 1);
                 let results = [item['replace']];
 
                 copies.forEach(() => {
-                    results.push(template);
+                    results.push(item['replace']);
                 });
 
-                result = result.replace(item['replace'], results.join('; '));
+                result = result.replace(item['replace'], results.join(' ' + this.separator + ' '));
             }
 
             result = result.replace(item['replace'], this.getItemResult(item));
@@ -211,10 +210,6 @@ class StepData {
 
     getItemResult(item) {
         let result = this.save[item['id']];
-
-        if (result.includes('{{') && result.includes('}}')) {
-            result = Helper.hideDoubleCurlyBrace(result);
-        }
 
         if (result === 'none') {
             return '';

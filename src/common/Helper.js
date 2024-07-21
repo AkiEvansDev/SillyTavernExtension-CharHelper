@@ -22,50 +22,40 @@ class Helper {
         return str.split(char).map(x => x.trim());
     }
 
-    static buildResult(template, steps) {
-        template = this.hideDoubleCurlyBrace(template);
+    static buildResult(data) {
+        let template = data['template'];
 
-        steps.forEach((stepData) => {
-            template = template.replace(stepData.step['template'], stepData.getResult());
+        data['steps'].forEach((stepData) => {
+            template = template.replace(stepData.step['template'], Helper.clearResult(stepData.getResult(), data['separator']));
         });
 
-        return this.restoreDoubleCurlyBrace(this.clearResult(template));
+        return template;
     }
 
-    static hideDoubleCurlyBrace(str) {
-        str = str.replaceAll('{{;', '&[[');
-        str = str.replaceAll('}}', '&]];');
+    static clearResult(str, separator) {
+        let patterns = [
+            { pattern: '  ', replace: ' ' },
+            { pattern: ': ' + separator, replace: ':' },
+            { pattern: ':' + separator, replace: ':' },
+            { pattern: separator + ' ' + separator, replace: separator },
+            { pattern: separator + ' ;', replace: ';' },
+            { pattern: separator + ';', replace: ';' },
+            { pattern: ' ;', replace: ';' },
+        ];
+        let run = true;
 
-        return str;
-    }
-
-    static restoreDoubleCurlyBrace(str) {
-        str = str.replaceAll('&[[;', '{{');
-        str = str.replaceAll('&]];', '}}');
-
-        return str;
-    }
-
-    static clearResult(str) {
-        while (str.includes('  ')) {
-            str = str.replaceAll('  ', ' ');
+        while (run === true) {
+            run = false;
+            patterns.forEach((p) => {
+                str = str.replaceAll(p['pattern'], p['replace']);
+            });
+            patterns.forEach((p) => {
+                if (str.includes(p['pattern']))
+                    run = true;
+            });
         }
-        
-        str = str.replaceAll('{', '');
-        str = str.replaceAll('}', '');
-        str = str.replaceAll('?', '');
-        str = str.replaceAll(' , ', ', ');
-        str = str.replaceAll(', ,', ',');
-        str = str.replaceAll('+ +', '+');
-        str = str.replaceAll(', ;', ';');
-        str = str.replaceAll(',;', ';');
-        str = str.replaceAll('+ ;', ';');
-        str = str.replaceAll('+;', ';');
-        str = str.replaceAll('; ;', ';');
-        str = str.replaceAll(' ;', ';');
-        str = str.replaceAll(';;', ';');
 
-        return str;
+        return str.trim();
     }
 }
 

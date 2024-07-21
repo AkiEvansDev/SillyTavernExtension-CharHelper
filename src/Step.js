@@ -66,9 +66,9 @@ function Step({ stepData, next, prev, result }) {
     }
 
     useEffect(() => {
-        if (stepData.render === true) {
+        if (stepData.render === false) {
+            stepData.render = true;
             initGroups(stepData.groups);
-            stepData.render = false;
         }
     }, []);
     

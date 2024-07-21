@@ -9,6 +9,7 @@ const DEFAULT = {
     template: DEFAULT_TEMPLATE,
     resource: DEFAULT_RESOURCE,
     translate: 'true',
+    separator: '+',
 };
 
 export const TEMPLATE_KEY_REGEX = /^[\w ]*:/g;
@@ -34,9 +35,10 @@ class StateManager {
         context.saveSettingsDebounced();
     }
 
-    static getSteps() {
-        let resources = this.getResources();
+    static getStepsData() {
         let template = this.getData('template');
+        let resources = this.getResources();
+        let separator = this.getData('separator');
         let steps = [];
 
         let index = 0;
@@ -45,7 +47,7 @@ class StateManager {
                 let split = Helper.smartSplit(line, ':');
                 
                 if (split[1] && split[1].match(TEMPLATE_VALUE_REGEX)) {
-                    let data = new StepData(index, { title: split[0], template: split[1] }, resources);
+                    let data = new StepData(index, { title: split[0], template: split[1] }, resources, separator);
                     data.setGroups();
 
                     steps.push(data);
@@ -54,7 +56,7 @@ class StateManager {
             }
         });
 
-        return { template: template, steps: steps };
+        return { template: template, steps: steps, separator: separator, render: false };
     }
 
     static getResources() {

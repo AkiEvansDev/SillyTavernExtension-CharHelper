@@ -6,9 +6,9 @@ Age: {number-age};
 Occupation: {text-occupation};
 Residence: {text-residence};
 Skills: {text-skills};
-Appearance: {appearance-face?}, {appearance-hair?}, {appearance-eyes?}, {appearance-tall?}, {appearance-body?}, {appearance-boobs?}; {text-additional*};
-Outfit: {outfit-top?} {outfit-bottom?outfit-full}, {outfit-footwear?}, {outfit-underwear*?}, {outfit-additional*?}; {text-additional*};
-Personality: {personality-type} - {personality-wings}, {text-custom}; {text-additional*};]`;
+Appearance: {appearance-face?} + {appearance-hair?} + {hair-style?} + {appearance-eyes?} + {appearance-tall?} + {appearance-body?} + {appearance-boobs?} + {text-additional*};
+Outfit: {outfit-top?} + {outfit-full?outfit-bottom} + {outfit-footwear?} + {outfit-underwear*?} + {outfit-additional*?} + {text-additional*};
+Personality: {personality-type} - {personality-wings} + {text-custom} + {text-additional*};]`;
 
 export const DEFAULT_RESOURCE =
 `--appearance
@@ -18,7 +18,7 @@ Face:
 
 Hair:
 	- custom: {text-custom}:
-	- hair: {hair-length?} {hair-structure?} {color} hair {hair-features?}, {hair-style?}:
+	- hair: {hair-length?} {hair-structure?} {color} hair {hair-features?}:
 
 Eyes:
 	- custom: {text-custom}:
@@ -39,8 +39,8 @@ Boobs:
 --outfit
 Top:
 	- custom: {text-custom}:
-	- shirt: {top-neckline?} {top-sleeve?} {top-fabric?} {color?} {top-features?} shirt:
-	- blouse: {top-neckline?} {top-sleeve?} {top-fabric?} {color?} {top-features?} blouse:
+	- shirt: {top-neckline?} {top-sleeve?} {top-fabric?} {top-features?} {color?} shirt:
+	- blouse: {top-neckline?} {top-sleeve?} {top-fabric?} {top-features?} {color?} blouse:
 	- jacket: {color?} jacket:
 
 Bottom:
@@ -94,43 +94,43 @@ Ethnicity:
 Color:
 	- custom: {text-custom}:
     - gold: #D4AF37:
+    - orange: #FFA500:
+    - red: #FF0000:
+    - pink: #FFC0CB:
+    - purple: #A020F0:
+    - blue: #0000FF:
+    - green: #00FF00:
+    - white: #FFFFFF:
+    - grey: #AAAAAA:
+	- black: #000000:
 	- light gold: #F8E231:
 	- deep gold: #FFD700:
 	- honey gold: #FFC394:
-    - orange: #FFA500:
 	- pastel orange: #FFC2C7:
 	- deep orange: #FF9900:
 	- tangerine orange: #FFA07A:
-    - red: #FF0000:
 	- ruby red: #E0115F:
 	- garnet red: #833333:
 	- crimson red: #DC143C:
-    - pink: #FFC0CB:
 	- pastel pink: #FFC5C5:
 	- blush pink: #FF69B4:
 	- fuchsia pink: #C154C1:
-    - purple: #A020F0:
 	- lilac purple: #C9C3E4:
 	- periwinkle purple: #B2E6CE:
 	- deep purple: #6c5ce7:
-    - blue: #0000FF:
 	- sky blue: #87CEEB:
 	- royal blue: #4169E1:
 	- navy blue: #03055B:
-    - green: #00FF00:
 	- mint green: #ACFF79:
 	- forest green: #228B22:
 	- lime green: #32CD32:
 	- caramel brown: #F5DEB3:
 	- honey brown: #FFC080:
 	- chocolate brown: #964B00:
-    - white: #FFFFFF:
 	- ivory white: #FFFFF0:
-    - grey: #AAAAAA:
 	- ash grey: #AAAAAA:
 	- platinum grey: #AAAAAA:
 	- charcoal grey: #AAAAAA:
-	- black: #000000:
 	- jet black: #000000:
 	- obsidian black: #000000:
 	- ebony black: #000000:
@@ -345,7 +345,6 @@ Cut:
 
 Fabric:
 	- silk: A luxurious, smooth, and soft fabric that provides a comfortable fit. Silk panties are breathable and can help regulate body temperature. However, they may not offer the same level of support as other materials.
-	- mesh: A lightweight, open-weave fabric that allows for airflow and moisture wicking. Mesh panties are ideal for warm weather or high-activity situations, as they help keep the area dry and cool. They may not provide the same level of coverage as solid fabrics.
 	- cotton: A natural, absorbent, and breathable fabric that is commonly used for panties. Cotton provides a comfortable fit and can help manage moisture. It's a versatile choice for everyday wear.
 	- lycra: A synthetic spandex material that offers stretch and flexibility. Lycra is often blended with other fabrics, like cotton or polyester, to enhance the fit and support of panties. It helps maintain their shape and provides a snug, comfortable feel.
 
@@ -473,5 +472,4 @@ Wings:
 	- 8w7: Confident, charismatic, and decisive leaders who value independence and self-reliance. They can come across as aloof or unemotional to others.
 	- 8w9: Introspective, creative, and emotionally complex individuals who explore the depths of their own psyche. They may struggle with self-doubt and social anxiety.
 	- 9w8: Perfectionistic, hardworking, and detail-oriented individuals who set high expectations for themselves and others. They may struggle with self-criticism and stress.
-	- 9w1: Ambitious, driven, and strategic thinkers who excel at planning and executing complex projects. They can be detached and unemotional in their personal relationships.
-`;
+	- 9w1: Ambitious, driven, and strategic thinkers who excel at planning and executing complex projects. They can be detached and unemotional in their personal relationships.`;

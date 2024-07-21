@@ -5,17 +5,12 @@ import Helper from './common/Helper';
 import Step from './Step';
 
 function App({ onCloseClicked }) {
-    const [data, setData] = useState(StateManager.getSteps());
-    const [wasRender, setRender] = useState(false);
-    
-    function refresh() {
-        setData(StateManager.getSteps());
+    const [data, setData] = useState(StateManager.getStepsData());
 
+    function refresh() {
         let container = document.getElementById('charHelperPanelSteps');
         ReactDOM.render((<></>), container, () => {
-            renderAll(() => {
-                render(0);
-            });
+            setData(StateManager.getStepsData());
         });
     }
 
@@ -27,9 +22,9 @@ function App({ onCloseClicked }) {
         container.style = 'display: none;';
         resultContainer.style = ''
 
-        let text = Helper.buildResult(data['template'], data['steps']);
+        let text = Helper.buildResult(data);
 
-        input.rows = text.split('\n').length + 1;
+        input.rows = text.split('\n').length + 2;
         input.value = text;
     }
 
@@ -89,13 +84,13 @@ function App({ onCloseClicked }) {
     }
 
     useEffect(() => {
-        if (wasRender === false) {
-            setRender(true);
+        if (data['render'] === false) {
+            data['render'] = true;
             renderAll(() => {
                 render(0);
             });
         }
-    }, []);
+    }, [data]);
 
     return (
         <>
