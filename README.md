@@ -1,1 +1,1 @@
-# SillyTavern-CharHelper
+# SillyTavernExtension-CharHelper
