@@ -1,15 +1,15 @@
-function Description({ id, stepData, text }) {
+function Description({ id, description, stepData, text }) {
     let wait = false;
 
     async function translate() {
         if (wait)
             return;
 
-        let value = stepData.save[id];
+        let descriptionKey = description + '-' + stepData.save[id];
 
-        if (!stepData.translates[value]) {
+        if (!stepData.translates[descriptionKey]) {
             wait = true;
-            stepData.translates[value] = await stepData.translate(value);
+            stepData.translates[descriptionKey] = await stepData.translate(descriptionKey);
             wait = false;
         }
 
@@ -25,7 +25,7 @@ function Description({ id, stepData, text }) {
             textTranslate.style = 'display: none;';
         }
 
-        textTranslate.textContent = stepData.translates[value];
+        textTranslate.textContent = stepData.translates[descriptionKey];
     }
 
     return (

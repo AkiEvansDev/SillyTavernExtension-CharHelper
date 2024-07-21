@@ -114,6 +114,7 @@ class StepData {
         }
         
         let resource = this.resources[key];
+        let descriptionKey = key;
         let type = 'select';
         let title = '';
 
@@ -131,7 +132,7 @@ class StepData {
 
         key = this.getSaveKey(group['id'] + '-' + key);
 
-        let data = { id: key, title: title, replace: replace, descriptionKey: resource['descriptionKey'], options: [], subGroups: [], show: '', copyParam: copyParam, type: type };
+        let data = { id: key, title: title, replace: replace, descriptionKey: descriptionKey, options: [], subGroups: [], show: '', copyParam: copyParam, type: type };
         this.save[key] = addNone ? 'none' : '';
 
         if (resource) {

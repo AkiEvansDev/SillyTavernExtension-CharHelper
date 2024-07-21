@@ -115,11 +115,11 @@ class StateManager {
                     let description = '';
 
                     if (split.length === 2) {
-                        resources[key].push({ title: valueTitle, value: valueKey, descriptionKey: key, type: 'option' });
+                        resources[key].push({ title: valueTitle, value: valueKey, type: 'option' });
                         values[valueKey] = value;
                         description = split[1].trim();
                     } else if (split.length === 3) {
-                        resources[key].push({ title: valueTitle, value: valueKey, template: split[1], descriptionKey: key, type: 'option' });
+                        resources[key].push({ title: valueTitle, value: valueKey, template: split[1], type: 'option' });
                         description = split[2].trim();
                     }
 

@@ -18,12 +18,14 @@ function Step({ stepData, next, prev, result }) {
         let translateBtn = container.querySelector('#' + data['id'] + '-text-translate-btn');
         let translate = container.querySelector('#' + data['id'] + '-text-translate');
 
-        if (stepData.descriptions[value] && stepData.descriptions[value].length > 0) {
-            text.textContent = stepData.descriptions[value];
-            translateBtn.style = '';
-            translate.textContent = stepData.translates[value];
+        let descriptionKey = data['descriptionKey'] + '-' + value;
 
-            if (!stepData.translates[value] && text.style.display) {
+        if (stepData.descriptions[descriptionKey] && stepData.descriptions[descriptionKey].length > 0) {
+            text.textContent = stepData.descriptions[descriptionKey];
+            translateBtn.style = '';
+            translate.textContent = stepData.translates[descriptionKey];
+
+            if (!stepData.translates[descriptionKey] && text.style.display) {
                 text.style = '';
                 translate.style = 'display: none;';
             }
