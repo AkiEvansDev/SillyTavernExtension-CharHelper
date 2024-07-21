@@ -38,6 +38,7 @@ class Helper {
         str = str.replaceAll('{', '');
         str = str.replaceAll('}', '');
         str = str.replaceAll('?', '');
+        str = str.replaceAll(' , ', ', ');
         str = str.replaceAll(', ,', ',');
         str = str.replaceAll('+ +', '+');
         str = str.replaceAll(', ;', ';');

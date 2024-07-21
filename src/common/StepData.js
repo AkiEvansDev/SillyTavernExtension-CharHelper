@@ -157,6 +157,11 @@ class StepData {
                         }
                     }
 
+                    if (res['value'] === 'custom') {
+                        option['label'] = '(Custom)';
+                        option['color'] = 'var(--SmartThemeQuoteColor)';
+                    }
+
                     data['options'].push(option);
                 }
             });
