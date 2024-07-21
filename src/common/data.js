@@ -13,35 +13,35 @@ Personality: {personality-type} - {personality-wings} + {text-custom} + {text-ad
 export const DEFAULT_RESOURCE =
 `--appearance
 Face:
-	- custom: {text-custom}:
 	- face: {face-shape} face:
+	- custom: {text-custom}:
 
 Hair:
-	- custom: {text-custom}:
 	- hair: {hair-length?} {hair-structure?} {color} hair {hair-features?}:
+	- custom: {text-custom}:
 
 Eyes:
-	- custom: {text-custom}:
 	- eyes: {eyes-shape?} {eyes-expression?} {color} eyes {eyes-features?}:
+	- custom: {text-custom}:
 
 Tall:
-	- custom: {text-custom}:
 	- tall: {number-tall} centimeters tall:
+	- custom: {text-custom}:
 
 Body:
-	- custom: {text-custom}:
 	- body: {body-shape} body:
+	- custom: {text-custom}:
 
 Boobs:
-	- custom: {text-custom}:
 	- boobs: {boobs-shape} {boobs-size} boobs:
+	- custom: {text-custom}:
 
 --outfit
 Top:
 	- custom: {text-custom}:
-	- shirt: {top-neckline?} {top-sleeve?} {top-fabric?} {top-features?} {color?} shirt:
-	- blouse: {top-neckline?} {top-sleeve?} {top-fabric?} {top-features?} {color?} blouse:
-	- jacket: {color?} jacket:
+	- shirt: {top-neckline?} {top-sleeve?} {top-features?} {color?} shirt:
+	- blouse: {top-neckline?} {top-sleeve?} {top-features?} {color?} blouse:
+	- jacket: {text-additional} {color?} jacket:
 
 Bottom:
 	- custom: {text-custom}:
@@ -50,29 +50,31 @@ Bottom:
 
 Full:
 	- custom: {text-custom}:
-	- long dress: {long-dress-neckline?} {color-type?} {color?} long dress:
+	- long dress: {long-dress-neckline?} {color?} {material-type?} long dress:
 	- maid: {color?} {maid-type?} maid dress:
-	- tight clothes: tight {color?} clothes:
-	- armored: {color?} armored clothes:
+	- tight clothes: tight {color?} {material-type?} clothes:
+	- armored: {text-additional} {color?} armored clothes:
 
 Footwear:
 	- custom: {text-custom}:
-	- shoes: {shoes-heels?} {color?} {shoes-flats}:
+	- shoes: {color?} {shoes-flats?shoes-heels}:
 	- boots: {color?} {boots}:
 
 Underwear:
 	- custom: {text-custom}:
-	- panties: {panties-cut?} {panties-fabric?} {panties-features?} {panties-coverage?} {color-type?} {color?} panties:
-	- bra: {bra-style?} {bra-features?} {color-type?} {color?} bra:
-	- nightdress: {nightdress-style?} {nightdress-features?} {color-type?} {color?} nightdress:
+	- bra: {bra-style?} {bra-features?} {color?} {material-type?} bra:
+	- without bra: No bra
+	- panties: {panties-cut?panties-coverage} {panties-features?} {color?} {material-type?} panties:
+	- without panties: No panties
+	- nightdress: {nightdress-style?} {nightdress-features?} {color?} {material-type?} nightdress:
 
 Additional:
 	- custom: {text-custom}:
 	- cape: {color?} cape:
 	- gloves: {gloves-length?} {color?} gloves:
 	- stockings: {stockings-sheerness?} {stockings-pattern?} {stockings-length?} {color?} stockings:
-	- choker: {choker-material?} {color?} choker:
-	- jewelry: {jewelry-type} {text-additional}:
+	- choker: {text-additional} {choker-material?} {color?} choker:
+	- jewelry: {text-additional} {jewelry-type}:
 	- bare: {bare-type}:
 
 --gender
@@ -136,11 +138,12 @@ Color:
 	- ebony black: #000000:
 	- raven black: #000000:
 
+--material
 Type:
 	- custom: {text-custom}:
-	- sheer: Describes a color that is very light and delicate, often with a slightly hazy or misty quality. Sheer colors tend to be pale and ethereal.
-	- translucent: Refers to colors that allow some light to pass through, giving them a semi-opaque appearance. Translucent colors often have a soft, luminous quality.
-	- diaphanous: Characterizes colors that are extremely lightweight, gossamer, and almost weightless in appearance. Diaphanous colors often evoke a sense of fragility and delicacy.
+	- sheer: Extremely thin and lightweight, allowing light to pass through and providing little opacity or coverage.
+	- translucent: Allowing light to pass through while obscuring details, often appearing as a pale or washed-out version of the underlying material.
+	- diaphanous: Exceedingly thin and delicate, with a gossamer-like quality that allows light to filter through and creates an ethereal, almost transparent appearance.
 
 --face
 Shape:
@@ -156,14 +159,14 @@ Shape:
 
 --hair
 Length:
-	- long: Hair that reaches the lower back or below, often requiring regular trims to maintain a neat appearance. This style is popular for those who want to showcase their locks.
-	- short: Hair that is cut close to the head, usually no longer than 2-3 inches. This style is practical, low-maintenance, and can accentuate facial features.
-	- chin-length: Hair that extends to the chin or just below, often framing the face. This style is versatile and can be styled in various ways.
-	- shoulder-length: Hair that reaches the shoulders or slightly above, providing a balance between style and practicality. This length is easy to manage and suits many face shapes.
-	- mid-back length: Hair that falls between the shoulder blades and the lower back, typically between 18-22 inches. This style adds volume and movement to the hair.
-	- waist-length: Hair that reaches the natural waistline, usually between 22-26 inches. This length creates a striking silhouette and can be styled in various updos.
-	- hip-length: Hair that extends to the hips or just above, typically between 26-30 inches. This style adds drama and can be worn down or up, depending on the occasion.
-	- floor-length: Hair that drapes down to the floor or below, often requiring regular maintenance to prevent tangling. This style is ideal for special events or those who want a dramatic, flowing look.
+	- long: Hair that reaches the lower back or below, often requiring regular trims to maintain a neat appearance.
+	- short: Hair that is cut close to the head, usually no longer than 2-3 inches.
+	- chin-length: Hair that extends to the chin or just below, often framing the face.
+	- shoulder-length: Hair that reaches the shoulders or slightly above, providing a balance between style and practicality.
+	- mid-back length: Hair that falls between the shoulder blades and the lower back, typically between 18-22 inches.
+	- waist-length: Hair that reaches the natural waistline, usually between 22-26 inches.
+	- hip-length: Hair that extends to the hips or just above, typically between 26-30 inches.
+	- floor-length: Hair that drapes down to the floor or below.
 
 Structure:
 	- soft: Hair with a gentle, silky texture that easily conforms to touch or styling.
@@ -174,7 +177,7 @@ Structure:
 
 Features:
 	- custom: {text-custom}:
-	- tips: with {color} tips:
+	- color ends: with {color} ends:
 	- streaks: with {color} streaks:
 	- gradient: with {color} gradient:
 
@@ -182,29 +185,29 @@ Style:
 Other:
 	- custom: {text-custom}:
 Ponytail:
-	- classic ponytail: A timeless style where the hair is gathered at the nape of the neck, secured with an elastic band, and often left loose at the front.
-	- high ponytail: The hair is swept up high on the crown, creating a sleek and polished look. This style is ideal for formal events or work settings.
-	- low ponytail: Instead of gathering the hair at the nape, it's secured lower down, often near the shoulders or chest. This adds a touch of elegance and sophistication.
-	- side ponytail: The hair is gathered to one side of the head, creating an asymmetrical yet stylish look. This is a great option for those with an oblong or heart-shaped face.
-	- braided ponytail: A combination of a regular ponytail and a braid, adding an extra layer of texture and visual interest. The braid can be woven into the ponytail or attached as a separate element.
+	- classic ponytail: A timeless style where the hair is gathered at the nape of the neck, secured with an elastic band.
+	- high ponytail: The hair is swept up high on the crown, creating a sleek and polished look.
+	- low ponytail: Instead of gathering the hair at the nape, it's secured lower down, often near the shoulders or chest.
+	- side ponytail: The hair is gathered to one side of the head, creating an asymmetrical yet stylish look.
+	- braided ponytail: A combination of a regular ponytail and a braid, adding an extra layer of texture and visual interest.
 Twin Tails:
-	- mega twin tails: Exaggerated, long, and flowing twin tails that often reach the lower back or even the hips. This dramatic style is perfect for cosplay, performances, or making a bold fashion statement.
-	- twin ponytails: Similar to regular ponytails, but with two separate ones, one on each side of the head. This style is versatile and can be dressed up or down.
-	- twin buns: Two small buns, one on each side of the head, often adorned with hairpins or other decorative elements. This is a chic and sophisticated updo for formal occasions.
-	- twin pigtails: Twin versions of the classic pigtail, where the hair is divided into two sections and twisted into tight, rounded buns. This style is playful and youthful, suitable for casual events or everyday wear.
+	- mega twin tails: Exaggerated, long, and flowing twin tails that often reach the lower back or even the hips.
+	- twin ponytails: Similar to regular ponytails, but with two separate ones, one on each side of the head.
+	- twin buns: Two small buns, one on each side of the head, often adorned with hairpins or other decorative elements.
+	- twin pigtails: Twin versions of the classic pigtail, where the hair is divided into two sections and twisted into tight, rounded buns.
 Up-Dos:
-	- bun: A versatile updo where the hair is coiled and secured at the top of the head, often with bobby pins or a hair tie. Buns can be sleek and polished or messy and undone, depending on the desired look.
-	- chignon: A low, sleek bun typically worn at the back of the head, often with a center part. This style exudes elegance and is commonly seen at red-carpet events or in high-end fashion.
-	- crown braid: A braided updo that starts at the crown of the head and weaves its way down, often ending in a small bun or loose tail. This style adds a touch of whimsy and romance to any outfit.
-	- half-up half-down: A style that combines both up and down elements. The top half of the hair is secured in a bun, chignon, or ponytail, while the bottom half flows freely. This look is perfect for those who want to showcase their hair while still keeping it out of their face.
+	- bun: A versatile updo where the hair is coiled and secured at the top of the head, often with bobby pins or a hair tie.
+	- chignon: A low, sleek bun typically worn at the back of the head, often with a center part.
+	- crown braid: A braided updo that starts at the crown of the head and weaves its way down, often ending in a small bun or loose tail.
+	- half-up half-down: A style that combines both up and down elements. The top half of the hair is secured in a bun, chignon, or ponytail, while the bottom half flows freely.
 
 --eyes
 Shape:
 	- custom: {text-custom}:
 	- almond: Eyes that are elongated and narrow, with a pointed outer corner. This shape is often associated with Asian and Middle Eastern features.
 	- round: Eyes with a circular shape, typically found in people of European and African descent. Round eyes can appear larger and more expressive.
-	- upturned: Eyes with an upward tilt at the outer corner, giving a slightly feline or innocent appearance. This shape is less common but can be seen in some individuals.
-	- down-turned: Eyes with a downward tilt at the outer corner, often conveying a more serious or melancholic expression. This shape is also less frequent but can be observed in certain individuals.
+	- upturned: Eyes with an upward tilt at the outer corner, giving a slightly feline or innocent appearance.
+	- down-turned: Eyes with a downward tilt at the outer corner, often conveying a more serious or melancholic expression.
 
 Expression:
 	- bright: Shining with lively energy and enthusiasm, often accompanied by a warm, engaging smile.
@@ -237,21 +240,21 @@ Shape:
 
 Size:
 Medium:
-	- D-cup: Full and rounded, providing ample cleavage without being overly large. Suitable for most clothing styles.
-	- DD-cup: Noticeably larger than D-cup, offering generous curves and deep cleavage. May require special attention when choosing tops and dresses.
-	- DE-cup: At the upper end of the medium range, DE-cup breasts are substantial and voluptuous, often requiring custom or plus-size clothing for a comfortable fit.
+	- D-cup: Full and rounded, providing ample cleavage without being overly large.
+	- DD-cup: Noticeably larger than D-cup, offering generous curves and deep cleavage.
+	- DE-cup: At the upper end of the medium range, DE-cup breasts are substantial and voluptuous.
 Small:
-	- A-cup: Very petite and flat, often requiring special bras for support. May be concealed or accentuated depending on the outfit.
-	- B-cup: Slightly larger than A-cup, still on the smaller side, and often requiring a push-up bra for a more pronounced appearance.
+	- A-cup: Very petite and flat, often requiring special bras for support.
+	- B-cup: Slightly larger than A-cup, still on the smaller side.
 	- C-cup: The smallest of the larger cup sizes, C-cup breasts are still relatively small but provide a bit more volume and cleavage compared to A and B cups.
 Large:
-	- E-cup: Considered the starting point of the larger cup sizes, E-cup breasts are substantial and may require specialized, high-impact bras for support.
-	- F-cup: Noticeably larger than E-cup, F-cup breasts are quite ample and may require custom or plus-size clothing to accommodate their size.
-	- FF-cup: At the upper end of the large range, FF-cup breasts are extremely full and may require extensive support and specialized garments to manage their size and movement.
+	- E-cup: Considered the starting point of the larger cup sizes.
+	- F-cup: Noticeably larger than E-cup, F-cup breasts are quite ample.
+	- FF-cup: At the upper end of the large range, FF-cup breasts are extremely full.
 Extra Large:
-	- G-cup: The largest standard cup size, G-cup breasts are extremely large and may require custom or plus-size clothing, as well as specialized, high-impact bras for support and comfort.
-	- GG-cup: Considered the next size up from G-cup, GG-cup breasts are among the largest in the world and often require custom, made-to-measure clothing and extensive support systems.
-	- H-cup: The largest commercially available cup size, H-cup breasts are truly enormous and may require custom, one-of-a-kind garments and highly specialized support to accommodate their size and movement.
+	- G-cup: The largest standard cup size, G-cup breasts are extremely large.
+	- GG-cup: Considered the next size up from G-cup, GG-cup breasts are among the largest in the world.
+	- H-cup: The largest commercially available cup size, H-cup breasts are truly enormous.
 
 --top
 Neckline:
@@ -261,20 +264,15 @@ Neckline:
 	- high collar: A tall, closed neckline that covers the neck and often extends up to the chin or even the jawline. High collars can add a dramatic, formal, or even regal touch to an outfit, often seen in traditional or historical clothing.
 
 Sleeve:
-	- long sleeves: Extend from the shoulder to the wrist, providing full arm coverage. Long sleeves are common in winter clothing and formal attire.
-	- short sleeves: End above the elbow, leaving the forearm exposed. Short sleeves are popular for casual wear, sports, and warm weather.
-	- cap sleeves: Very short sleeves that only cover the top of the shoulder, often seen in dresses, blouses, and some tops.
-
-Fabric:
-	- silk: A luxurious, smooth, and lustrous natural protein fiber obtained from silkworm cocoons. Silk is known for its softness, drape, and durability, making it a popular choice for high-end clothing, especially in traditional Asian and European cultures.
-	- cotton: A common, versatile, and breathable natural fiber derived from the cotton plant. Cotton is often used for casual, everyday clothing due to its comfort, affordability, and ease of care. It can range from lightweight, smooth voile to thick, textured denim.
-	- linen: A strong, lightweight, and natural fiber made from the flax plant. Linen is valued for its cooling properties, crisp texture, and classic, timeless look. It's often used for summer clothing, such as dresses, pants, and shirts, as well as home textiles like bedding and curtains.
+	- long sleeves: Extend from the shoulder to the wrist, providing full arm coverage.
+	- short sleeves: End above the elbow, leaving the forearm exposed.
+	- cap sleeves: Very short sleeves that only cover the top of the shoulder.
 
  Features:
     - open collar: The top buttons of the shirt are left unfastened, creating a slightly more relaxed and approachable demeanor.
-    - unbuttoned: The shirt is partially opened, revealing the wearer's chest and upper torso. This can be a sign of casualness or a deliberate choice for comfort or style.
-    - untucked: The shirt hangs loose outside the pants, giving a more relaxed and informal look. This style is commonly seen in casual or creative environments.
-    - tucked in: The shirt is securely fastened into the pants, creating a neat and polished appearance. This is often preferred for formal occasions or professional settings.
+    - unbuttoned: The shirt is partially opened, revealing the wearer's chest and upper torso.
+    - untucked: The shirt hangs loose outside the pants, giving a more relaxed and informal look.
+    - tucked in: The shirt is securely fastened into the pants, creating a neat and polished appearance.
 
 --skirt
 Length:
@@ -285,20 +283,20 @@ Length:
 	- maxi: A long, floor-sweeping skirt that reaches the ankles or even the floor, often 36 inches (91 cm) or longer, providing complete coverage and a dramatic look.
 
 Fabric:
-	- silk: A luxurious, smooth, and soft natural protein fiber obtained from silkworms. Silk skirts are often associated with elegance, sophistication, and high-end fashion. They drape beautifully and can be quite expensive.
-	- cotton: A natural, breathable, and absorbent fiber derived from the cotton plant. Cotton skirts are popular for their comfort, practicality, and affordability. They come in a wide range of weaves, from lightweight voile to heavier denim.
-	- polyester: A synthetic fabric made from petroleum-based materials. Polyester skirts are known for their durability, wrinkle resistance, and easy care. They can mimic the look and feel of natural fibers at a lower cost.
-	- denim: A sturdy, cotton twill textile commonly used for making jeans and other casual clothing. Denim skirts have gained popularity in recent years for their rugged, laid-back style. They can be dressed up or down depending on the occasion.
-	- tartan: A type of plaid fabric, often associated with traditional Scottish and Irish clothing. Tartan skirts, also known as kilt skirts, are typically made from wool and feature distinctive patterns that represent specific clans or families.
-	- armored: In the context of fantasy settings, an armored skirt could refer to a protective garment worn for combat or defensive purposes. This might involve a skirt made from metal plates, leather, or other strong materials, often adorned with additional armor pieces like shoulder guards or a breastplate.
+	- silk: A luxurious, smooth, and soft natural protein fiber obtained from silkworms. Silk skirts are often associated with elegance, sophistication, and high-end fashion.
+	- cotton: A natural, breathable, and absorbent fiber derived from the cotton plant. Cotton skirts are popular for their comfort, practicality, and affordability.
+	- polyester: A synthetic fabric made from petroleum-based materials. Polyester skirts are known for their durability, wrinkle resistance, and easy care.
+	- denim: A sturdy, cotton twill textile commonly used for making jeans and other casual clothing.
+	- tartan: A type of plaid fabric, often associated with traditional Scottish and Irish clothing.
+	- armored: In fantastical contexts, an armored skirt could refer to a protective garment worn for combat or defensive purposes. This might involve a skirt made from metal plates, leather, or other strong materials.
 
 --trousers
 Fit:
-	- slim fit: Trousers that are tailored closely to the leg, typically fitting snugly around the thighs and knees. This style is often preferred for formal or business attire.
-	- classic fit: A traditional, balanced cut that provides a comfortable, versatile fit without being too tight or loose. Classic fit trousers are suitable for both casual and dressy occasions.
-	- relaxed fit: Trousers with a slightly looser cut through the thigh and knee, offering more room and comfort. Relaxed fit styles are ideal for everyday wear or for those who prefer a more casual look.
-	- wide leg: Trousers with an exaggerated, loose cut through the leg, often reaching the ankle or even the floor. Wide leg styles are a fashion trend and can add a stylish, modern touch to outfits.
-	- culottes: A style of trousers that resemble a skirt, with a split or opening in the crotch area, creating a flowy, feminine silhouette. Culottes are often worn for formal events or as a fashion statement.
+	- slim fit: Trousers that are tailored closely to the leg, typically fitting snugly around the thighs and knees.
+	- classic fit: A traditional, balanced cut that provides a comfortable, versatile fit without being too tight or loose.
+	- relaxed fit: Trousers with a slightly looser cut through the thigh and knee, offering more room and comfort.
+	- wide leg: Trousers with an exaggerated, loose cut through the leg, often reaching the ankle or even the floor.
+	- culottes: A style of trousers that resemble a skirt, with a split or opening in the crotch area, creating a flowy, feminine silhouette.
 
 --long dress
 Neckline:
@@ -335,29 +333,6 @@ Boots:
 	- knee-high boots: Boots that extend up to the knee, providing additional warmth and protection. They can be worn for both formal and informal events.
 	- over-the-knee boots: Boots that reach above the knee, often worn for fashion statements or to add a touch of elegance to an outfit.
 
---panties
-Cut:
-	- thong: A thong is a type of panty that has a narrow strip of fabric that passes between the buttocks, typically with a small piece of fabric covering the front genital area. It provides minimal coverage and is often worn for its provocative or sensual appeal.
-	- G-string: A G-string is similar to a thong but has an even narrower strip of fabric between the buttocks, resembling the shape of the letter "G." It offers very little coverage and is designed for comfort and style rather than practicality.
-	- cheeky: Cheeky panties have a higher cut on the leg, typically reaching just above the hip bone. They provide more coverage than thongs or G-strings but still expose a significant portion of the buttocks, making them a popular choice for those who want a balance between style and modesty.
-	- boyshorts: Boyshorts are a style of panty that resembles men's briefs but is designed for women. They have a wider, more substantial fabric coverage compared to thongs or G-strings, providing better support and coverage for the buttocks and genital area. They often have a flat front and a curved back for a comfortable fit.
-	- hipsters: Hipster panties have a lower rise than boyshorts, typically sitting just below the hip bone. They provide more coverage than thongs or G-strings but less than boyshorts, making them a versatile option for those who want a mix of style and practicality.
-
-Fabric:
-	- silk: A luxurious, smooth, and soft fabric that provides a comfortable fit. Silk panties are breathable and can help regulate body temperature. However, they may not offer the same level of support as other materials.
-	- cotton: A natural, absorbent, and breathable fabric that is commonly used for panties. Cotton provides a comfortable fit and can help manage moisture. It's a versatile choice for everyday wear.
-	- lycra: A synthetic spandex material that offers stretch and flexibility. Lycra is often blended with other fabrics, like cotton or polyester, to enhance the fit and support of panties. It helps maintain their shape and provides a snug, comfortable feel.
-
-Features:
-	- lace: A delicate, intricate fabric pattern woven from yarn or thread, often used in feminine undergarments for a romantic or sensual look.
-	- mesh: A fabric made of interwoven yarns or threads, creating a net-like structure. Mesh panties are breathable, lightweight, and often used for athletic or summer wear.
-	- armored: In a fictional or fantastical context, armored panties might refer to undergarments with built-in protection, such as metal plates or reinforced materials, designed for characters engaging in combat or high-impact activities.
-
-Coverage:
-	- low coverage: Minimal fabric, often sheer or mesh, providing a barely-there feel while still offering some discreetness.
-	- mid coverage: Standard panties with a moderate amount of fabric that covers the essential areas without being too revealing or constricting.
-	- full coverage: High-waisted or boyshort-style panties that extend higher on the waist and provide more comprehensive coverage, often used for athletic or medical purposes.
-
 --bra
 Style:
 	- underwire: Features a flexible wire running along the underside of the cups to provide additional support and lift. This style helps maintain breast shape and prevents sagging.
@@ -370,8 +345,26 @@ Style:
 Features:
 	- lace: A delicate, ornamental fabric used for the bra's trim, often adding a touch of elegance and femininity to the design.
 	- mesh: A lightweight, breathable fabric woven in a net-like pattern, commonly used for the bra's back panel and sides to enhance ventilation and comfort.
-	- straps: Shoulder straps that secure the bra to the wearer, usually adjustable for a customizable fit. They can be made from various materials, such as satin, cotton, or elastic.
-	- armored: In fictional or fantastical contexts, an armored bra might refer to a magical or protective undergarment that enhances the wearer's physical attributes or provides additional defense against attacks.
+	- straps: Shoulder straps that secure the bra to the wearer, usually adjustable for a customizable fit.
+	- armored: In fantastical contexts, an armored bra might refer to a magical or protective undergarment that enhances the wearer's physical attributes or provides additional defense against attacks.
+
+--panties
+Cut:
+	- thong: A thong is a type of panty that has a narrow strip of fabric that passes between the buttocks, typically with a small piece of fabric covering the front genital area. It provides minimal coverage and is often worn for its provocative or sensual appeal.
+	- G-string: A G-string is similar to a thong but has an even narrower strip of fabric between the buttocks, resembling the shape of the letter "G." It offers very little coverage and is designed for style rather than practicality.
+	- cheeky: Cheeky panties have a higher cut on the leg, typically reaching just above the hip bone. They provide more coverage than thongs or G-strings but still expose a significant portion of the buttocks, making them a popular choice for those who want a balance between style and modesty.
+	- boyshorts: Boyshorts are a style of panty that resembles men's briefs but is designed for women. They have a wider, more substantial fabric coverage compared to thongs or G-strings, providing better support and coverage for the buttocks and genital area. They often have a flat front and a curved back for a comfortable fit.
+	- hipsters: Hipster panties have a lower rise than boyshorts, typically sitting just below the hip bone. They provide more coverage than thongs or G-strings but less than boyshorts, making them a versatile option for those who want a mix of style and practicality.
+
+Coverage:
+	- low coverage: Minimal fabric, often sheer or mesh, providing a barely-there feel while still offering some discreetness.
+	- mid coverage: Standard panties with a moderate amount of fabric that covers the essential areas without being too revealing or constricting.
+	- full coverage: High-waisted or boyshort-style panties that extend higher on the waist and provide more comprehensive coverage.
+
+Features:
+	- lace: A delicate, intricate fabric pattern woven from yarn or thread, often used in feminine undergarments for a romantic or sensual look.
+	- mesh: A fabric made of interwoven yarns or threads, creating a net-like structure.
+	- armored: In fantastical context, armored panties might refer to undergarments with built-in protection, such as metal plates or reinforced materials, designed for characters engaging in combat.
 
 --nightdress
 Style:
@@ -389,32 +382,36 @@ Features:
 
 --gloves
 Length:
-	- short: These gloves typically cover the hand up to the wrist, providing protection for the fingers and palm without restricting movement.
-	- mid-cuff: Mid-cuff gloves rise slightly above the wrist, offering additional protection for the forearm while still allowing for a full range of motion.
-	- over-the-elbow: These gloves extend past the elbow, providing comprehensive protection for the entire arm, including the forearm and upper arm.
-	- gauntlet: Gauntlet gloves are the longest type, typically reaching up to the mid-forearm or even the bicep. They offer maximum protection for the hands, arms, and sometimes the shoulders.
+	- short: Reaches only the wrist, leaving the forearm exposed.
+	- mid-cuff: Covers the wrist and extends about halfway up the forearm.
+	- over-the-elbow: Encompasses the entire forearm, reaching above the elbow joint.
+	- gauntlet: A long, full-length glove that extends from the wrist to the base of the fingers, often reaching the mid-forearm or higher.
+    - cuff: A shorter version of the mid-cuff, typically ending just below the elbow.
+    - chopper: A type of gauntlet glove designed for heavy, protective use.
 
 --stockings
 Sheerness:
-	- sheer: Extremely thin and transparent, allowing the skin to show through. Sheer stockings provide minimal coverage and are often worn for fashion or as part of lingerie.
-	- semi-sheer: Thicker than sheer but still somewhat translucent, offering a balance between coverage and visibility. Semi-sheer stockings are popular for everyday wear or as a more modest alternative to sheer hosiery.
-	- opaque: Completely solid and non-transparent, providing full coverage of the legs. Opaque stockings are ideal for colder weather, as they offer warmth and can help prevent chafing.
+	- sheer: Extremely thin and transparent, allowing the skin to show through.
+	- semi-sheer: Thicker than sheer but still somewhat translucent, offering a balance between coverage and visibility.
+	- opaque: Completely solid and non-transparent, providing full coverage of the legs.
 
 Pattern:
+	- fishnet: A mesh-like fabric with a grid pattern, often worn for a more provocative or fetish-inspired look, particularly with revealing clothing.
 	- solid: A single, uniform color, often black, navy, or flesh-toned for everyday wear.
 	- striped: Horizontal or vertical bands of different colors, adding visual interest to outfits.
 	- polka dots: Small, evenly spaced dots on a solid background, creating a playful, whimsical look.
 	- geometric prints: Intricate designs featuring shapes like chevrons, zigzags, or abstract patterns that add a touch of style to the legs.
-	- fishnet: A mesh-like fabric with a grid pattern, often worn for a more provocative or fetish-inspired look, particularly with revealing clothing.
 
 Length:
-	- thigh-high: These extend from the waist to the upper thigh, typically reaching just below the hip bone. They provide coverage and support for the legs and can be worn for both fashion and functional purposes, such as with dresses or as part of a costume.
-	- mid-calf: As the name suggests, these stockings end at the mid-point of the calf, usually around the middle of the lower leg. Mid-calf stockings offer a balance between coverage and visibility, making them suitable for a wide range of outfits and occasions.
-	- ankle: The shortest type, ankle stockings reach just above or at the ankle bone. They provide minimal coverage but can add a stylish touch to outfits, especially when paired with shoes or boots that show off the ankles. Ankle stockings are often worn for fashion purposes or as part of a more revealing or provocative look.
+	- thigh-high: Stockings that reach up to the upper thigh, typically just below the hip joint.
+	- mid-calf: Stockings that extend to the middle of the calf, usually around the midpoint between the knee and ankle.
+	- ankle: The shortest type, reaching only to the ankle bone, not covering the calf at all.
 
 Features:
-	- with suspenders: Provides additional support and keeps the stockings in place, especially during physical activities.
-	- reinforced heel and toe: Increases durability and prevents wear and tear in high-impact areas, ensuring the stockings last longer.
+	- with suspenders: Stockings secured by fabric straps (suspenders) that connect to the waistband or a belt.
+    - with garters: Stockings held up by fabric straps (garters) that wrap around the leg, typically above the knee.
+	- with waistband: Stockings have an elastic or fabric band that encircles the natural waist for support and stability.
+    - with top band: A narrow, usually elastic band at the top of the stocking, often used in combination with garters or suspenders.
 
 --choker
 Material:
@@ -427,13 +424,15 @@ Material:
 
 --jewelry
 Type:
-	- earrings: Adornments worn on the ears, such as studs, drops, or dangles. They can be simple or elaborate, featuring different materials and designs.
-	- rings: Circular pieces of jewelry worn on the fingers, often symbolizing commitment or status. Rings can be plain bands or feature gemstones, engravings, or other embellishments.
+	- earrings: Small decorative items worn on or in the ears, often made of precious metals, gemstones, or other materials.
+	- ring: Circular piece of jewelry worn on the fingers or sometimes on other parts of the body, typically made of metal and sometimes featuring gemstones.
+    - necklace: A piece of jewelry worn around the neck, often made of a chain or cord with a pendant or other decorative elements attached.
 
 --bare
 Type:
-	- bare belly: Exposed midriff, often revealing a toned or muscular stomach.
-	- bare thighs: Legs without clothing or covering, typically showing the shape and contours of the thighs.
+	- bare belly: Exposed abdominal area, typically showing the skin and muscles of the stomach without any clothing or covering.
+	- bare thighs: Exposed lower legs, typically showing the skin and muscles of the upper legs without any clothing or covering from the groin to the knees.
+    - bare shoulders: Exposed upper arms, typically showing the skin and muscles of the shoulders without any clothing or covering from the neck to the upper arm.
 
 --personality
 Type:
