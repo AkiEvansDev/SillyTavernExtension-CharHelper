@@ -4,7 +4,7 @@ import StateManager from './common/StateManager';
 function Settings() {
     const [template, setTemplate] = useState(StateManager.getData('template'));
     const [resource, setResource] = useState(StateManager.getData('resource'));
-    const [translate, seTranslate] = useState(StateManager.getData('translate'));
+    const [translate, setTranslate] = useState(StateManager.getData('translate'));
 
     const handleChangeTemplate = (event) => {
         setTemplate(event.target.value);
@@ -17,7 +17,7 @@ function Settings() {
     };
 
     const handleChangeTranslate = (event) => {
-        seTranslate(event.target.value);
+        setTranslate(event.target.value);
         StateManager.setData('translate', event.target.value);
     };
 

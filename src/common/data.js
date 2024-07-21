@@ -1,15 +1,83 @@
-export const DEFAULT_TEMPLATE = `[{{char}}'s Background:
+export const DEFAULT_TEMPLATE =
+`[{{char}}'s Background:
 Gender: {gender};
 Ethnicity: {ethnicity};
 Age: {number-age};
 Occupation: {text-occupation};
 Residence: {text-residence};
 Skills: {text-skills};
-Appearance: {appearance-face?}, {appearance-hair?}, {appearance-eyes?}, {appearance-tall?}, {appearance-body}, {appearance-boobs?}; {text-additional*};
+Appearance: {appearance-face?}, {appearance-hair?}, {appearance-eyes?}, {appearance-tall?}, {appearance-body?}, {appearance-boobs?}; {text-additional*};
 Outfit: {outfit-top?} {outfit-bottom?outfit-full}, {outfit-footwear?}, {outfit-underwear*?}, {outfit-additional*?}; {text-additional*};
 Personality: {personality-type} - {personality-wings}; {text-additional*};]`;
 
-export const DEFAULT_RESOURCE = `--color
+export const DEFAULT_RESOURCE =
+`--appearance
+Face:
+    - face: {face-shape} face:
+
+Hair:
+    - hair: {hair-length?} {hair-structure?} {color} hair, {hair-style?}:
+
+Eyes:
+    - eyes: {eyes-shape?} {eyes-expression?} {color} eyes:
+
+Tall:
+    - tall: {number-tall} centimeters tall:
+
+Body:
+    - body: {body-shape} body:
+
+Boobs:
+    - boobs: {boobs-shape} {boobs-size} boobs:
+
+--outfit
+Top:
+	- shirt: {top-neckline?} {top-sleeve?} {top-fabric?} {color?} shirt: A standard upper body garment, typically made of fabric and worn for warmth, modesty, and style.
+	- blouse: {top-neckline?} {top-sleeve?} {top-fabric?} {color?} blouse: A type of shirt, usually more form-fitting and designed for women, often with a collar and buttons.
+	- jacket: {color?} jacket: A outerwear piece, typically made of heavier materials, worn for warmth, protection, and fashion.
+
+Bottom:
+	- skirt: {skirt-length?} {skirt-fabric?} {color?} skirt: A piece of clothing that hangs from the waist, often made of lightweight materials, worn for fashion and modesty.
+	- trousers: {trousers-fit?} {color?} trousers: A lower body garment, usually made of fabric, worn for comfort, practicality, and style.
+
+Full:
+	- long dress: {long-dress-neckline?} {color-type?} {color?} long dress: A single-piece garment that covers the upper and lower body, often floor-length, worn for formal or casual occasions, with a concentration on flowing, comfortable designs, and a variety of necklines, sleeves, and embellishments to suit individual tastes.
+	- maid: {color?} maid {maid-type?} dress: A traditional uniform consisting of a crisp, high-collared blouse, a short, pleated skirt, and sometimes a cap or apron, typically associated with domestic service, with a modern twist emphasizing comfort, practicality, and a touch of whimsy.
+	- tight clothes: tight {color?} clothes: Form-fitting attire that accentuates the wearer's figure, often used for performance, exercise, or sensual purposes, with a focus on high-quality, stretchy materials, bold colors, and bold designs that make a statement.
+	- armored: {color?} armored clothes: A complete set of protective clothing, typically made of metal plates, leather, or a combination of both, worn by warriors and knights for battle, with a focus on rugged, durable designs, intricate details, and a sense of historical authenticity that evokes a strong, powerful image.
+
+Footwear:
+	- shoes: {shoes-heels?} {color?} {shoes-flats}: A type of footwear that covers the foot and is designed for various activities, such as walking, running, or dancing, with an emphasis on comfort, durability, and stylish designs that complement the overall outfit.
+	- boots: {color?} {boots}: Sturdy, protective footwear that covers the foot and lower leg, often made of leather, worn for outdoor activities, fashion, or as part of a uniform, with a focus on sleek, modern silhouettes and versatile colors that can be dressed up or down.
+
+Underwear:
+	- panties: {panties-cut?} {panties-fabric?} {panties-features?} {panties-coverage?} {color-type?} {color?} panties: A type of women's undergarment that covers the genital area and is designed for comfort and modesty, with a focus on soft, breathable materials, cute designs, and a range of colors and patterns to suit individual preferences.
+	- bra: {bra-style?} {bra-features?} {color-type?} {color?} bra: A women's undergarment that supports and holds the breasts in place, often with cups and straps, emphasizing comfort, quality, and a variety of styles to accommodate different body types and personal preferences.
+	- nightdress: {nightdress-style?} {nightdress-features?} {color-type?} {color?} nightdress: A type of women's nightwear that serves as both a comfortable sleepwear and a modest, elegant option for lounging around the house, often featuring a loose, flowing design with long sleeves and a high neckline.
+
+Additional:
+	- cape: {color?} cape: A piece of fabric worn over the shoulders, often for fashion, to add a dramatic touch, or as part of a costume, with a focus on bold colors, striking patterns, and flowing designs that command attention.
+	- gloves: {gloves-length?} {color?} gloves: A type of clothing worn on the hands for warmth, protection, or as an accessory, with a concentration on stylish, modern designs, high-quality materials, and a range of colors and textures to suit various occasions and personal styles.
+	- stockings: {stockings-sheerness?} {stockings-pattern?} {stockings-length?} {color?} stockings {stockings-features?}: Hosiery worn to cover and warm the legs, often for fashion or as part of a uniform, with a focus on seamless, comfortable designs, vibrant colors, and playful patterns that add a touch of whimsy to the overall look.
+	- choker: {choker-material?} {color?} choker:  A type of jewelry worn around the neck, typically made of fabric, leather, or metal, and designed to draw attention to the face and neck, with a concentration on delicate, understated designs that complement a variety of outfits and personal styles.
+	- jewelry: {jewelry-type} {text-additional}: Adornments worn on the body to express personal style, convey status, or symbolize beliefs, made from various materials like gold, silver, gemstones, and more, with a focus on high-quality craftsmanship, unique designs, and statement pieces that make a lasting impression.
+	- bare: {bare-type} {text-additional}: Wearing minimal or no clothing, often for comfort, practicality, or as a fashion statement in certain contexts, emphasizing confidence, self-expression, and a connection with one's natural form.
+
+--gender
+Gender:
+    - female:
+    - male:
+
+--ethnicity
+Ethnicity:
+	- human:
+	- elf:
+	- dark elf:
+	- demon:
+	- succubus:
+	- vampire:
+
+--color
 Color:
 Gold:
 	- light gold: #F8E231: A soft, warm, and inviting golden hue.
@@ -59,20 +127,6 @@ Type:
 	- sheer: A color that is extremely light and barely visible, often appearing as a faint hue or wash.
 	- translucent: A color that is semi–transparent, allowing some light to pass through and giving an ethereal or ghostly quality.
 	- diaphanous: A color that is very light and delicate, often having a gossamer or filmy appearance, as if it could easily be blown away.
-
---gender
-Gender:
-    - female:
-    - male:
-
---ethnicity
-Ethnicity:
-	- human:
-	- elf:
-	- dark elf:
-	- demon:
-	- succubus:
-	- vampire:
 
 --face
 Shape:
@@ -171,57 +225,6 @@ Extra Large:
 	- G-cup: One of the largest sizes, often over 115 cm in circumference, which can create a truly dramatic, attention-grabbing effect that borders on the exotic and the extraordinary.
 	- GG-cup: Exceptionally large, typically above 120 cm in circumference, providing a truly massive, imposing presence that can be both intimidating and alluring, often requiring custom-made clothing and extensive support to accommodate the size and weight.
 	- H-cup: The largest common size, usually exceeding 125 cm in circumference, which can be both thrilling and challenging, requiring a high level of self-acceptance, confidence, and specialized care to maintain comfort and style.
-
---appearance
-Face:
-    - face: {face-shape} face:
-
-Hair:
-    - hair: {hair-length?} {hair-structure?} {color} hair, {hair-style?}:
-
-Eyes:
-    - eyes: {eyes-shape?} {eyes-expression?} {color} eyes:
-
-Tall:
-    - tall: {number-tall} centimeters tall:
-
-Body:
-    - body: {body-shape} body:
-
-Boobs:
-    - boobs: {boobs-shape} {boobs-size} boobs:
-
---outfit
-Top:
-	- shirt: {top-neckline?} {top-sleeve?} {top-fabric?} {color?} shirt: A standard upper body garment, typically made of fabric and worn for warmth, modesty, and style.
-	- blouse: {top-neckline?} {top-sleeve?} {top-fabric?} {color?} blouse: A type of shirt, usually more form-fitting and designed for women, often with a collar and buttons.
-	- jacket: {color?} jacket: A outerwear piece, typically made of heavier materials, worn for warmth, protection, and fashion.
-	
-Bottom:
-	- skirt: {skirt-length?} {skirt-fabric?} {color?} skirt: A piece of clothing that hangs from the waist, often made of lightweight materials, worn for fashion and modesty.	
-	- trousers: {trousers-fit?} {color?} trousers: A lower body garment, usually made of fabric, worn for comfort, practicality, and style.
-
-Full:
-	- long dress: {long-dress-neckline?} {color-type?} {color?} long dress: A single-piece garment that covers the upper and lower body, often floor-length, worn for formal or casual occasions, with a concentration on flowing, comfortable designs, and a variety of necklines, sleeves, and embellishments to suit individual tastes.
-	- maid: {color?} maid {maid-type?} dress: A traditional uniform consisting of a crisp, high-collared blouse, a short, pleated skirt, and sometimes a cap or apron, typically associated with domestic service, with a modern twist emphasizing comfort, practicality, and a touch of whimsy.
-	- tight clothes: tight {color?} clothes: Form-fitting attire that accentuates the wearer's figure, often used for performance, exercise, or sensual purposes, with a focus on high-quality, stretchy materials, bold colors, and bold designs that make a statement.
-	- armored: {color?} armored clothes: A complete set of protective clothing, typically made of metal plates, leather, or a combination of both, worn by warriors and knights for battle, with a focus on rugged, durable designs, intricate details, and a sense of historical authenticity that evokes a strong, powerful image.
-
-Footwear:
-	- shoes: {shoes-heels?} {color?} {shoes-flats}: A type of footwear that covers the foot and is designed for various activities, such as walking, running, or dancing, with an emphasis on comfort, durability, and stylish designs that complement the overall outfit.
-	- boots: {color?} {boots}: Sturdy, protective footwear that covers the foot and lower leg, often made of leather, worn for outdoor activities, fashion, or as part of a uniform, with a focus on sleek, modern silhouettes and versatile colors that can be dressed up or down.
-
-Underwear:
-	- panties: {panties-cut?} {panties-fabric?} {panties-features?} {panties-coverage?} {color-type?} {color?} panties: A type of women's undergarment that covers the genital area and is designed for comfort and modesty, with a focus on soft, breathable materials, cute designs, and a range of colors and patterns to suit individual preferences.
-	- bra: {bra-style?} {bra-features?} {color-type?} {color?} bra: A women's undergarment that supports and holds the breasts in place, often with cups and straps, emphasizing comfort, quality, and a variety of styles to accommodate different body types and personal preferences.
-	
-Additional:
-	- cape: {color?} cape: A piece of fabric worn over the shoulders, often for fashion, to add a dramatic touch, or as part of a costume, with a focus on bold colors, striking patterns, and flowing designs that command attention.
-	- gloves: {gloves-length?} {color?} gloves: A type of clothing worn on the hands for warmth, protection, or as an accessory, with a concentration on stylish, modern designs, high-quality materials, and a range of colors and textures to suit various occasions and personal styles.
-	- stockings: {stockings-sheerness?} {stockings-pattern?} {stockings-length?} {color?} stockings {stockings-features?}: Hosiery worn to cover and warm the legs, often for fashion or as part of a uniform, with a focus on seamless, comfortable designs, vibrant colors, and playful patterns that add a touch of whimsy to the overall look.
-	- choker: {choker-material?} {color?} choker:  A type of jewelry worn around the neck, typically made of fabric, leather, or metal, and designed to draw attention to the face and neck, with a concentration on delicate, understated designs that complement a variety of outfits and personal styles.
-	- jewelry: {jewelry-type} {text-additional}: Adornments worn on the body to express personal style, convey status, or symbolize beliefs, made from various materials like gold, silver, gemstones, and more, with a focus on high-quality craftsmanship, unique designs, and statement pieces that make a lasting impression.
-	- bare: {bare-type} {text-additional}: Wearing minimal or no clothing, often for comfort, practicality, or as a fashion statement in certain contexts, emphasizing confidence, self-expression, and a connection with one's natural form.
 
 --top
 Neckline:
@@ -336,6 +339,20 @@ Features:
 	- mesh: A lightweight, open-weave fabric used for breathability and comfort in the bra, often found in the cups or back panels, allowing for airflow and helping to regulate body temperature, making it a practical choice for warm weather or for women who tend to sweat more.
 	- straps: The parts of the bra that go around the wearer's shoulders or back, providing support and stability, usually adjustable to ensure a comfortable, secure fit, and available in various materials, such as satin, lace, or sports mesh, to match the bra's style and purpose.
 	- armored: A unique, protective style of bra made from durable materials, likely designed for combat or high-impact activities that require full coverage and flexibility, providing a functional and stylish option for those in such roles or with specific needs, often featuring additional support and reinforcement for the breasts during intense physical activities.
+
+--nightdress
+Style:
+	- short: A short nightdress that typically reaches just above or at mid-thigh level, providing a playful, flirtatious look while still maintaining a sense of modesty, often featuring a loose, flowing design and soft fabrics for comfort, suitable for warm summer nights or for those who prefer a more revealing sleepwear option.
+	- long: A long nightdress that drapes elegantly down to the ankles or even the floor, offering a sophisticated, alluring appearance, often made from luxurious materials like silk or satin, providing a cozy, enveloping feel for a restful night's sleep, ideal for cooler climates or for those who appreciate a more traditional, classic look.
+	- babydoll: A short, loose-fitting nightdress with a sweetheart neckline and short sleeves, resembling a babydoll dress, providing a soft, feminine silhouette and a touch of whimsy, often featuring ruffles, lace, or other delicate details, suitable for those who want a playful, romantic sleepwear style.
+	- camisole: A short, tight-fitting nightdress that covers the torso and midriff, often featuring a V-neckline and short sleeves, providing a sleek, modern look, often made from lightweight, breathable materials like cotton or modal, suitable for warm weather or for those who prefer a minimalist, easy-to-wear sleepwear option.
+	- peignoir: A long, flowing nightdress with a high neckline and long sleeves, often featuring a shawl or robe, providing a dramatic, luxurious appearance, often made from sumptuous materials like velvet or chiffon, suitable for special occasions or for those who appreciate a regal, sophisticated sleepwear style.
+
+Features:
+	- lace: A decorative, intricate fabric used to add a touch of elegance and romance to the nightdress design, often found in the bodice, hem, or trim, providing a feminine, whimsical look that can elevate the overall appearance of the nightdress and the wearer.
+	- ruffles: A decorative element featuring gathered or pleated fabric, often used to add volume, texture, and visual interest to the nightdress, providing a playful, feminine touch, suitable for those who appreciate a more whimsical, romantic sleepwear style.
+	- adjustable straps: Nightdresses with adjustable straps allow for a customizable fit, ensuring the garment stays secure and comfortable throughout the night, a practical feature for women of various shapes and sizes.
+	- soft fabrics: Nightdresses made from soft, breathable materials like cotton, modal, or silk provide ultimate comfort and relaxation, allowing the wearer to drift off to sleep in peace, a key consideration for a restful night's sleep.
 
 --gloves
 Length:

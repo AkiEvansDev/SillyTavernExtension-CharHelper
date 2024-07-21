@@ -8,7 +8,7 @@ import StepData from './StepData'
 const DEFAULT = {
     template: DEFAULT_TEMPLATE,
     resource: DEFAULT_RESOURCE,
-    translate: true,
+    translate: 'true',
 };
 
 export const TEMPLATE_KEY_REGEX = /^[\w ]*:/g;
@@ -45,7 +45,7 @@ class StateManager {
                 let split = Helper.smartSplit(line, ':');
                 
                 if (split[1] && split[1].match(TEMPLATE_VALUE_REGEX)) {
-                    let data = new StepData(index, { title: split[0], description: split[1] }, resources);
+                    let data = new StepData(index, { title: split[0], template: split[1] }, resources);
                     data.setGroups();
 
                     steps.push(data);
@@ -66,6 +66,8 @@ class StateManager {
         let property = 0;
 
         let resources = {};
+        let values = {};
+        let descriptions = {};
 
         Helper.smartSplit(resource, '\n').forEach(function (line) {
             if (line) {
@@ -79,7 +81,7 @@ class StateManager {
                     let split = Helper.smartSplit(line, ':');
 
                     if (key && header > 0) {
-                        resources[key].push({ title: Helper.titleCase(split[0]), description: split[1], type: 'subTitle' });
+                        resources[key].push({ title: Helper.titleCase(split[0]), type: 'subTitle' });
                         property = 0;
                     } else {
                         let title = Helper.titleCase(split[0]);
@@ -95,7 +97,7 @@ class StateManager {
                         if (!resources.hasOwnProperty(key))
                             resources[key] = [];
 
-                        resources[key].push({ title: title, description: split[1], type: 'title' });
+                        resources[key].push({ title: title, type: 'title' });
                         property = 0;
                     }
 
@@ -107,11 +109,22 @@ class StateManager {
                     
                     let split = Helper.smartSplit(line, ':');
                     let value = split[0].substring(2);
+                    let valueTitle = Helper.titleCase(value);
+                    let valueKey = Helper.keyCase(value);
+
+                    let description = '';
 
                     if (split.length === 2) {
-                        resources[key].push({ title: Helper.titleCase(value), value: Helper.keyCase(value), description: split[1], type: 'option' });
+                        resources[key].push({ title: valueTitle, value: valueKey, type: 'option' });
+                        values[valueKey] = value;
+                        description = split[1].trim();
                     } else if (split.length === 3) {
-                        resources[key].push({ title: Helper.titleCase(value), value: Helper.keyCase(value), template: split[1], description: split[2], type: 'option' });
+                        resources[key].push({ title: valueTitle, value: valueKey, template: split[1], type: 'option' });
+                        description = split[2].trim();
+                    }
+
+                    if (description && description.length > 0) {
+                        descriptions[valueKey] = valueTitle + ': ' + description;
                     }
 
                     property++;
@@ -123,8 +136,12 @@ class StateManager {
             } 
         });
 
-        console.log(resources);
-        return resources;
+        return { resources: resources, values: values, descriptions: descriptions };
+    }
+
+    static async translateText(text) {
+        let result = await translate(text);
+        return result;
     }
 }
 

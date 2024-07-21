@@ -66,6 +66,13 @@ function App({ onCloseClicked }) {
         let container = document.getElementById('charHelperPanelSteps');
         let element = container.querySelector('#charHelperStep-' + index);
 
+        if (!element) {
+            setTimeout(function () {
+                render(index, hide);
+            }, 1000);
+            return;
+        }
+
         element.style = '';
 
         if (hide !== null) {

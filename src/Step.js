@@ -5,26 +5,43 @@ function Step({ stepData, next, prev, result }) {
     useEffect(() => {
         if (stepData.render === true) {
             stepData.groups.flatMap(g => g['items']).forEach(function (data) {
-                onChange(data, stepData.save[data['id']]);
+                onChange(data, stepData.save[data['id']], true);
             });
             stepData.render = false;
         }
     }, []);
 
-    function onChange(data, value) {
+    function onChange(data, value, init = false) {
         let container = document.getElementById('charHelperStep-' + stepData.stepIndex + '-container');
-        let text = container.querySelector('#' + data['id'] + '-text');
 
-        text.textContent = data['description'][value];
+        let text = container.querySelector('#' + data['id'] + '-text');
+        let translateBtn = container.querySelector('#' + data['id'] + '-text-translate-btn');
+        let translate = container.querySelector('#' + data['id'] + '-text-translate');
+
+        if (stepData.descriptions[value] && stepData.descriptions[value].length > 0) {
+            text.textContent = stepData.descriptions[value];
+            translateBtn.style = '';
+            translate.textContent = stepData.translates[value];
+
+            if (!stepData.translates[value] && text.style.display) {
+                text.style = '';
+                translate.style = 'display: none;';
+            }
+        } else {
+            text.textContent = '';
+            translateBtn.style = 'display: none;';
+            translate.textContent = '';
+        }
+
         stepData.save[data['id']] = value;
 
-        if (data['show'] && value === 'none') {
+        if (data['show'] && (value === 'variant' || init)) {
             let target = container.querySelector('#' + data['id']);
             let show = container.querySelector('#' + data['show']);
 
             let showInput = container.querySelector('#' + data['show'] + '-input');
             let showData = stepData.groups.flatMap(g => g['items']).find(d => d['id'] === data['show']);
-            let showValue = showData['options'].find(o => !o['disabled'] && o['value'] !== 'none')['value'];
+            let showValue = showData['options'].find(o => !o['disabled'])['value'];
 
             showInput.value = showValue;
             onChange(showData, showValue);

@@ -24,7 +24,7 @@ class Helper {
 
     static buildResult(template, steps) {
         steps.forEach((stepData) => {
-            template = template.replace(stepData.step['description'], stepData.getResult());
+            template = template.replace(stepData.step['template'], stepData.getResult());
         });
 
         return this.clearResult(template);

@@ -1,4 +1,5 @@
 import Helper from './Helper'
+import StateManager from './StateManager';
 import { TEMPLATE_VALUE_REGEX } from './StateManager'
 
 class StepData {
@@ -8,9 +9,17 @@ class StepData {
 
         this.stepIndex = stepIndex;
         this.step = step;
-        this.resources = resources;
+        this.resources = resources['resources'];
+        this.values = resources['values'];
+        this.descriptions = resources['descriptions'];
+        this.translates = {};
 
         this.render = true;
+    }
+
+    translate(value) {
+        let text = this.descriptions[value];
+        return StateManager.translateText(text);
     }
 
     getSaveKey(key) {
@@ -30,7 +39,7 @@ class StepData {
     }
 
     createCopy(group, data) {
-        let copy = this.getData(group, data['copyParam']['id'], data['copyParam']['addNone'], true);
+        let copy = this.getData(group, data['copyParam']['id'], data['copyParam']['addNone'], data['copyParam']['variant'], true);
 
         group['items'].push(copy);
 
@@ -61,7 +70,7 @@ class StepData {
     }
 
     setGroups() {
-        Helper.smartSplit(this.step['description'], ',').forEach((part, index) => {
+        Helper.smartSplit(this.step['template'], ',').forEach((part, index) => {
             this.groups.push(this.getGroup(part, 'ch-group-' + this.stepIndex + '-' + index));
         });
     }
@@ -76,10 +85,10 @@ class StepData {
                 let keys = Helper.smartSplit(key, '?').filter(k => k);
 
                 if (keys.length === 1) {
-                    group['items'].push(this.getData(group, keys[0], true, copy));
+                    group['items'].push(this.getData(group, keys[0], true, false, copy));
                 } else if (keys.length === 2) {
-                    let data1 = this.getData(group, keys[0], true, copy);
-                    let data2 = this.getData(group, keys[1], true, copy);
+                    let data1 = this.getData(group, keys[0], true, true, copy);
+                    let data2 = this.getData(group, keys[1], true, true, copy);
 
                     data1['show'] = data2['id'];
                     data2['show'] = data1['id'];
@@ -88,20 +97,20 @@ class StepData {
                     group['items'].push(data1);
                 }
             } else {
-                group['items'].push(this.getData(group, key, false, copy));
+                group['items'].push(this.getData(group, key, false, false, copy));
             }
         });
 
         return group;
     }
 
-    getData(group, key, addNone, copy = false) {
+    getData(group, key, addNone, variant, copy = false) {
         let copyParam = null;
         let replace = key;
 
         if (key.endsWith('*')) {
             key = key.substring(0, key.length - 1);
-            copyParam = { id: key, addNone: addNone };
+            copyParam = { id: key, addNone: addNone, variant: variant };
         }
         
         let resource = this.resources[key];
@@ -134,8 +143,6 @@ class StepData {
                 if (res['type'] === 'title') {
                     data['title'] = res['title'];
                 } else {
-                    data['description'][res['value']] = res['description'];
-
                     if (res['type'] !== 'subTitle' && !this.save[data['id']]) {
                         this.save[data['id']] = res['value'];
                     }
@@ -153,13 +160,17 @@ class StepData {
                     data['options'].push(option);
                 }
             });
+
+            if (variant) {
+                data['options'].push({ value: 'variant', label: '(Variant)', color: 'var(--SmartThemeQuoteColor)', disabled: false });
+            }
         }
 
         return data;
     }
 
     getResult() {
-        let result = this.step['description'];
+        let result = this.step['template'];
 
         this.groups.forEach((group) => {
             result = result.replace(group['title'], this.getGroupResult(group));
@@ -198,6 +209,9 @@ class StepData {
         if (result === 'none') {
             return '';
         }
+
+        if (this.values[result])
+            return this.values[result];
 
         if (item['subGroups'].length > 0) {
             let subGroupId = item['id'] + '-' + result;

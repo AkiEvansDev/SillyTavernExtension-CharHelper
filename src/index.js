@@ -10,9 +10,7 @@ rootContainer.appendChild(rootElement);
 
 const root = ReactDOM.createRoot(rootElement);
 root.render(
-    <React.StrictMode>
-        <Settings />
-    </React.StrictMode>
+    <Settings />
 );
 
 const buttonContainer = document.getElementById('extensionsMenu');
@@ -47,7 +45,5 @@ function closePanel() {
 
 const rootWindow = ReactDOM.createRoot(rootContainerWindow);
 rootWindow.render(
-    <React.StrictMode>
-        <App onCloseClicked={closePanel} />
-    </React.StrictMode>
+    <App onCloseClicked={closePanel} />
 );

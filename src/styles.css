@@ -1,6 +1,13 @@
 .charHelperDataDescription {
+    display: flex;
     margin-top: 2px !important;
     margin-bottom: 2px !important;
+}
+
+.charHelperDataDescription > .menu_button {
+    align-self: self-start;
+    padding: 0 !important;
+    margin: -4px 0 0 4px !important;
 }
 
 @media (min-width: 1000px) {
