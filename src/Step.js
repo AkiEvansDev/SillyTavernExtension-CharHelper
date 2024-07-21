@@ -41,7 +41,12 @@ function Step({ stepData, next, prev, result }) {
             let show = container.querySelector('#' + data['show']);
 
             let showInput = container.querySelector('#' + data['show'] + '-input');
-            let showData = stepData.groups.flatMap(g => g['items']).find(d => d['id'] === data['show']);
+            let showData = stepData.groups.flatMap(g => getItems(g)).find(d => d['id'] === data['show']);
+            if (!showData) {
+                console.log(data['show']);
+                console.log(stepData);
+                console.log('---------');
+            }
             let showValue = showData['options'].find(o => !o['disabled'])['value'];
 
             showInput.value = showValue;
@@ -63,6 +68,21 @@ function Step({ stepData, next, prev, result }) {
                 }
             });
         }
+    }
+
+    function getItems(group) {
+        let result = [];
+
+        group['items'].forEach((item) => {
+            result.push(item);
+            if (item['subGroups'] && item['subGroups'].length > 0) {
+                item['subGroups'].forEach((subGroup) => {
+                    result.push(...getItems(subGroup))
+                });
+            }
+        });
+
+        return result;
     }
 
     useEffect(() => {

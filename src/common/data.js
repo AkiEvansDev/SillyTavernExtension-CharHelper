@@ -57,8 +57,8 @@ Full:
 
 Footwear:
 	- custom: {text-custom}:
-	- shoes: {color?} {shoes-flats?shoes-heels}:
-	- boots: {color?} {boots}:
+	- shoes: {text-additional} {color?} {shoes-flats?shoes-heels}:
+	- boots: {text-additional} {color?} {boots}:
 
 Underwear:
 	- custom: {text-custom}:
