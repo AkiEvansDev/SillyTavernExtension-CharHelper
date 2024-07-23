@@ -5,7 +5,7 @@ import Helper from './common/Helper';
 import Step from './Step';
 
 function App({ onCloseClicked }) {
-    const [data, setData] = useState(StateManager.getStepsData());
+    const [data, setData] = useState({ data: null });
 
     function refresh() {
         let container = document.getElementById('charHelperPanelSteps');
@@ -84,7 +84,9 @@ function App({ onCloseClicked }) {
     }
 
     useEffect(() => {
-        if (data['render'] === false) {
+        if (data['data'] === null) {
+            refresh();
+        } else if (data['render'] === false) {
             data['render'] = true;
             renderAll(() => {
                 render(0);

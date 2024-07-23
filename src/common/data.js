@@ -3,15 +3,101 @@ export const DEFAULT_TEMPLATE =
 Gender: {gender};
 Ethnicity: {ethnicity};
 Age: {number-age};
-Occupation: {text-occupation};
-Residence: {text-residence};
-Skills: {text-skills};
+Occupation: {occupation};
+Residence: {residence};
+Skills: {skills};
+Secret: {secret};
+Likes: {likes};
+Dislikes: {dislikes};
+Sex Practices and Fetishes: {sex-practices-and-fetishes};
+Speech: {speech};
 Appearance: {appearance-face?} + {appearance-hair?} + {hair-style?} + {appearance-eyes?} + {appearance-tall?} + {appearance-body?} + {appearance-boobs?} + {text-additional*};
 Outfit: {outfit-top?} + {outfit-full?outfit-bottom} + {outfit-footwear?} + {outfit-underwear*?} + {outfit-additional*?} + {text-additional*};
-Personality: {personality-type} - {personality-wings} + {text-custom} + {text-additional*};]`;
+Personality: {personality?} + {text-custom} + {text-additional*};]`;
 
 export const DEFAULT_RESOURCE =
-`--appearance
+`--gender
+Gender:
+	- female:
+	- male:
+
+--ethnicity
+Ethnicity:
+	- custom: {text-custom}:
+	- human:
+	- elf:
+	- dark elf:
+	- demon:
+	- succubus:
+	- vampire:
+
+--occupation
+Occupation:
+    - no:
+    - text: {text-occupation}:
+    - unemployed:
+
+--residence
+Residence:
+    - no:
+    - text: {text-residence}:
+
+--skills
+Skills:
+    - no:
+    - text: {text-skills}:
+
+--secret
+Secret:
+    - no:
+    - text: {text-secret}:
+
+--likes
+Likes:
+    - no:
+    - text: {text-likes}:
+
+--dislikes
+Dislikes:
+    - no:
+    - text: {text-dislikes}:
+
+--sex
+Practices and Fetishes:
+    - no:
+    - text: {text-sex}:
+
+--speech
+Speech:
+    - no:
+    - text: {text-speech}:
+    - variants: {speech-variants*}:
+
+Variants:
+	- direct: Straightforward, to-the-point, and unambiguous in communication.
+	- indirect: Subtle, hinting, and often using circumlocution or euphemisms.
+	- formal: Polite, precise, and adhering to strict linguistic conventions.
+	- informal: Casual, colloquial, and often using slang or colloquialisms.
+	- sarcastic: Using irony, understatement, or mocking tone to convey a message.
+	- rhetorical: Emphasizing style and persuasive techniques over literal meaning.
+	- concise: Using the fewest words necessary to convey the intended message.
+	- elaborate: Providing detailed, extensive explanations or descriptions.
+	- humorous: Incorporating wit, irony, or playful language for comedic effect.
+	- authoritative: Speaking with confidence, assertiveness, and a commanding presence.
+	- confrontational: Engaging in arguments or discussions with a challenging, sometimes aggressive tone.
+	- empathetic: Expressing understanding, compassion, and emotional support in speech.
+	- persuasive: Using language to influence opinions, beliefs, or actions.
+	- whimsical: Incorporating playful, fanciful, or nonsensical elements in speech for creative effect.
+	- toxic: Using speech to manipulate, gaslight, or belittle others, often with malicious intent.
+	- uncensored: forthrightly expressing thoughts and opinions without restraint or tact, potentially causing offense.
+	- blunt: Speaking honestly and straightforwardly, often without concern for others' feelings.
+	- candor: Openness, honesty, and sincerity in communication.
+	- clarity: Articulating thoughts clearly and effectively, with minimal confusion.
+	- eloquence: Fluent, persuasive, and captivating speech, often with a touch of artistry.
+	- mannered: Adopting a distinctive, often affected or artificial, speech pattern.
+	- vivacious: Speaking with energy, enthusiasm, and a lively, engaging personality.
+
+--appearance
 Face:
 	- face: {face-shape} face:
 	- custom: {text-custom}:
@@ -54,6 +140,7 @@ Full:
 	- maid: {color?} {maid-type?} maid dress:
 	- tight clothes: tight {color?} {material-type?} clothes:
 	- armored: {text-additional} {color?} armored clothes:
+    - toga: {color?} {material-type?} toga:
 
 Footwear:
 	- custom: {text-custom}:
@@ -77,20 +164,9 @@ Additional:
 	- jewelry: {text-additional} {jewelry-type}:
 	- bare: {bare-type}:
 
---gender
-Gender:
-	- female:
-	- male:
-
---ethnicity
-Ethnicity:
-	- custom: {text-custom}:
-	- human:
-	- elf:
-	- dark elf:
-	- demon:
-	- succubus:
-	- vampire:
+--personality
+Personality:
+    - four letters and wings: {personality-type} - {personality-wings}:
 
 --color
 Color:
@@ -269,8 +345,8 @@ Sleeve:
 	- cap sleeves: Very short sleeves that only cover the top of the shoulder.
 
  Features:
-    - open collar: The top buttons of the shirt are left unfastened, creating a slightly more relaxed and approachable demeanor.
     - unbuttoned: The shirt is partially opened, revealing the wearer's chest and upper torso.
+    - open collar: The top buttons of the shirt are left unfastened, creating a slightly more relaxed and approachable demeanor.
     - untucked: The shirt hangs loose outside the pants, giving a more relaxed and informal look.
     - tucked in: The shirt is securely fastened into the pants, creating a neat and polished appearance.
 
@@ -341,6 +417,7 @@ Style:
 	- push-up: Intended to enhance cleavage and create the illusion of larger breasts, push-up bras have thicker padding and often a higher center gore (the part between the cups).
 	- sports: A specialized bra designed specifically for physical activity, sports bras provide extra support and stability to prevent breast movement and discomfort during exercise.
 	- bikini: A type of bra that exposes the midriff, typically worn with a thong or boyshort bottom. Bikini bras have a lower cut and shorter straps compared to traditional bras, offering a more provocative look.
+    - bandeau: A minimalist, strapless or lightly-strapped bralette made of stretchy fabric that provides minimal coverage and support for the breasts.
 
 Features:
 	- lace: A delicate, ornamental fabric used for the bra's trim, often adding a touch of elegance and femininity to the design.

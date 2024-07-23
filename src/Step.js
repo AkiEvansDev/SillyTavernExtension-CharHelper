@@ -11,9 +11,9 @@ function Step({ stepData, next, prev, result }) {
     function onChange(data, value, init = false) {
         let container = document.getElementById('charHelperStep-' + stepData.stepIndex + '-container');
 
-        let text = container.querySelector('#' + data['id'] + '-text');
-        let translateBtn = container.querySelector('#' + data['id'] + '-text-translate-btn');
-        let translate = container.querySelector('#' + data['id'] + '-text-translate');
+        let text = container.querySelector('#' + data['id'] + '-description-text');
+        let translateBtn = container.querySelector('#' + data['id'] + '-description-text-translate-btn');
+        let translate = container.querySelector('#' + data['id'] + '-description-text-translate');
 
         let descriptionKey = data['descriptionKey'] + '-' + value;
 
@@ -42,11 +42,6 @@ function Step({ stepData, next, prev, result }) {
 
             let showInput = container.querySelector('#' + data['show'] + '-input');
             let showData = stepData.groups.flatMap(g => getItems(g)).find(d => d['id'] === data['show']);
-            if (!showData) {
-                console.log(data['show']);
-                console.log(stepData);
-                console.log('---------');
-            }
             let showValue = showData['options'].find(o => !o['disabled'])['value'];
 
             showInput.value = showValue;
@@ -60,7 +55,6 @@ function Step({ stepData, next, prev, result }) {
             initGroups(data['subGroups']);
             data['subGroups'].forEach(group => {
                 let groupTarget = container.querySelector('#' + group['id']);
-
                 if (group['id'] === data['id'] + '-' + value) {
                     groupTarget.style = '';
                 } else {

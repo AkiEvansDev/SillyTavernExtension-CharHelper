@@ -26,7 +26,27 @@ class Helper {
         let template = data['template'];
 
         data['steps'].forEach((stepData) => {
-            template = template.replace(stepData.step['template'], Helper.clearResult(stepData.getResult(), data['separator']));
+            let result = Helper.clearResult(stepData.getResult(), data['separator']);
+
+            if (result === 'no' || result === 'no;') {
+                let index = -1;
+                let drop = -1;
+
+                this.smartSplit(template, '\n').forEach(function (line) {
+                    index++;
+                    if (line.includes(stepData.step['template'])) {
+                        drop = index;
+                    }
+                });
+
+                if (drop > -1) {
+                    let lines = template.split('\n');
+                    lines.splice(drop, 1);
+                    template = lines.join('\n');
+                }
+            } else {
+                template = template.replace(stepData.step['template'], result);
+            }
         });
 
         return template;

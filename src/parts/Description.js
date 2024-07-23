@@ -14,8 +14,8 @@ function Description({ id, description, stepData, text }) {
         }
 
         let container = document.getElementById('charHelperStep-' + stepData.stepIndex + '-container');
-        let text = container.querySelector('#' + id + '-text');
-        let textTranslate = container.querySelector('#' + id + '-text-translate');
+        let text = container.querySelector('#' + id + '-description-text');
+        let textTranslate = container.querySelector('#' + id + '-description-text-translate');
 
         if (!text.style.display) {
             text.style = 'display: none;';
@@ -30,9 +30,9 @@ function Description({ id, description, stepData, text }) {
 
     return (
         <div class="charHelperDataDescription">
-            <small id={id + '-text'}>{stepData.descriptions[description + '-' + stepData.save[id]]}</small>
-            <small id={id + '-text-translate'}></small>
-            <div id={id + '-text-translate-btn'} class="menu_button interactable fa-solid fa-language" style={(text && text.length > 0 ? {} : { display: 'none' })} onClick={() => translate()}></div>
+            <small id={id + '-description-text'}>{stepData.descriptions[description + '-' + stepData.save[id]]}</small>
+            <small id={id + '-description-text-translate'}></small>
+            <div id={id + '-description-text-translate-btn'} class="menu_button interactable fa-solid fa-language" style={(text && text.length > 0 ? {} : { display: 'none' })} onClick={() => translate()}></div>
         </div>
     );
 }
