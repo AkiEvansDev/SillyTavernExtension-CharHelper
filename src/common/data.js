@@ -485,8 +485,8 @@ Length:
 	- ankle: The shortest type, reaching only to the ankle bone, not covering the calf at all.
 
 Features:
-	- with suspenders: Stockings secured by fabric straps (suspenders) that connect to the waistband or a belt.
     - with garters: Stockings held up by fabric straps (garters) that wrap around the leg, typically above the knee.
+	- with suspenders: Stockings secured by fabric straps (suspenders) that connect to the waistband or a belt.
 	- with waistband: Stockings have an elastic or fabric band that encircles the natural waist for support and stability.
     - with top band: A narrow, usually elastic band at the top of the stocking, often used in combination with garters or suspenders.
 
