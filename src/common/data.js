@@ -6,6 +6,7 @@ Age: {number-age};
 Occupation: {occupation};
 Residence: {residence};
 Skills: {skills};
+Story: {story};
 Secret: {secret};
 Likes: {likes};
 Dislikes: {dislikes};
@@ -46,6 +47,11 @@ Residence:
 Skills:
     - no:
     - text: {text-skills}:
+
+--story
+Story:
+    - no:
+    - text: {text-story}:
 
 --secret
 Secret:
