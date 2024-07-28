@@ -322,21 +322,21 @@ Shape:
 
 Size:
 Medium:
-	- D-cup: Full and rounded, providing ample cleavage without being overly large.
-	- DD-cup: Noticeably larger than D-cup, offering generous curves and deep cleavage.
-	- DE-cup: At the upper end of the medium range, DE-cup breasts are substantial and voluptuous.
+	- D size: Full and rounded, providing ample cleavage without being overly large.
+	- DD size: Noticeably larger than D-cup, offering generous curves and deep cleavage.
+	- DE size: At the upper end of the medium range, DE-cup breasts are substantial and voluptuous.
 Small:
-	- A-cup: Very petite and flat, often requiring special bras for support.
-	- B-cup: Slightly larger than A-cup, still on the smaller side.
-	- C-cup: The smallest of the larger cup sizes, C-cup breasts are still relatively small but provide a bit more volume and cleavage compared to A and B cups.
+	- A size: Very petite and flat, often requiring special bras for support.
+	- B size: Slightly larger than A-cup, still on the smaller side.
+	- C size: The smallest of the larger cup sizes, C-cup breasts are still relatively small but provide a bit more volume and cleavage compared to A and B cups.
 Large:
-	- E-cup: Considered the starting point of the larger cup sizes.
-	- F-cup: Noticeably larger than E-cup, F-cup breasts are quite ample.
-	- FF-cup: At the upper end of the large range, FF-cup breasts are extremely full.
+	- E size: Considered the starting point of the larger cup sizes.
+	- F size: Noticeably larger than E-cup, F-cup breasts are quite ample.
+	- FF size: At the upper end of the large range, FF-cup breasts are extremely full.
 Extra Large:
-	- G-cup: The largest standard cup size, G-cup breasts are extremely large.
-	- GG-cup: Considered the next size up from G-cup, GG-cup breasts are among the largest in the world.
-	- H-cup: The largest commercially available cup size, H-cup breasts are truly enormous.
+	- G size: The largest standard cup size, G-cup breasts are extremely large.
+	- GG size: Considered the next size up from G-cup, GG-cup breasts are among the largest in the world.
+	- H size: The largest commercially available cup size, H-cup breasts are truly enormous.
 
 --top
 Neckline:
