@@ -165,7 +165,7 @@ Additional:
 	- custom: {text-custom}:
 	- cape: {color?} cape:
 	- gloves: {gloves-length?} {color?} gloves:
-	- stockings: {stockings-sheerness?} {stockings-pattern?} {stockings-length?} {color?} stockings:
+	- stockings: {stockings-sheerness?} {stockings-pattern?} {stockings-length?} {color?} stockings {stockings-features?}:
 	- choker: {text-additional} {choker-material?} {color?} choker:
 	- jewelry: {text-additional} {jewelry-type}:
 	- bare: {bare-type}:
