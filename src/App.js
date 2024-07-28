@@ -8,6 +8,7 @@ function App({ onCloseClicked }) {
     const [data, setData] = useState({ data: null });
 
     function refresh() {
+        resultBack();
         let container = document.getElementById('charHelperPanelSteps');
         ReactDOM.render((<></>), container, () => {
             setData(StateManager.getStepsData());
