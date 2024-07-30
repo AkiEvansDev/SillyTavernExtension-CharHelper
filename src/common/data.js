@@ -10,8 +10,9 @@ Story: {story};
 Secret: {secret};
 Likes: {likes};
 Dislikes: {dislikes};
-Sex Practices and Fetishes: {sex-practices-and-fetishes};
 Speech: {speech};
+Sex Practices and Fetishes: {sex-practices-and-fetishes};
+Relationship: {relationship};
 Appearance: {appearance-face?} + {appearance-hair?} + {hair-style?} + {appearance-eyes?} + {appearance-tall?} + {appearance-body?} + {appearance-boobs?} + {text-additional*};
 Outfit: {outfit-top?} + {outfit-full?outfit-bottom} + {outfit-footwear?} + {outfit-underwear*?} + {outfit-additional*?} + {text-additional*};
 Personality: {personality?} + {text-custom} + {text-additional*};]`;
@@ -68,16 +69,21 @@ Dislikes:
     - no:
     - text: {text-dislikes}:
 
---sex
-Practices and Fetishes:
-    - no:
-    - text: {text-sex}:
-
 --speech
 Speech:
     - no:
     - text: {text-speech}:
     - variants: {speech-variants*}:
+
+--sex
+Practices and Fetishes:
+    - no:
+    - text: {text-sex}:
+
+--relationship
+Relationship:
+    - no:
+    - text: {text-relationship}:
 
 Variants:
 	- direct: Straightforward, to-the-point, and unambiguous in communication.
