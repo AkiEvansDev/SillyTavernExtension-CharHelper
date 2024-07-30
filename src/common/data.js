@@ -75,16 +75,6 @@ Speech:
     - text: {text-speech}:
     - variants: {speech-variants*}:
 
---sex
-Practices and Fetishes:
-    - no:
-    - text: {text-sex}:
-
---relationship
-Relationship:
-    - no:
-    - text: {text-relationship}:
-
 Variants:
 	- direct: Straightforward, to-the-point, and unambiguous in communication.
 	- indirect: Subtle, hinting, and often using circumlocution or euphemisms.
@@ -108,6 +98,16 @@ Variants:
 	- eloquence: Fluent, persuasive, and captivating speech, often with a touch of artistry.
 	- mannered: Adopting a distinctive, often affected or artificial, speech pattern.
 	- vivacious: Speaking with energy, enthusiasm, and a lively, engaging personality.
+
+--sex
+Practices and Fetishes:
+    - no:
+    - text: {text-sex}:
+
+--relationship
+Relationship:
+    - no:
+    - text: {text-relationship}:
 
 --appearance
 Face:
