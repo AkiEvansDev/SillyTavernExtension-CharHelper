@@ -13,11 +13,10 @@ function Group({ stepData, group, onChange }) {
         div.id = copy.id + '-part';
         copyContainer.appendChild(div);
 
-        ReactDOM.render((<Data stepData={stepData} data={copy} onChange={onChange} />), div);
-
-        div.appendChild(document.createElement("hr"))
-
-        onChange(copy, stepData.save[copy['id']]);
+        ReactDOM.render((<Data stepData={stepData} data={copy} onChange={onChange} />), div, () => {
+            div.insertBefore(document.createElement("hr"), div.firstChild);
+            onChange(copy, stepData.save[copy['id']]);
+        });
     }
 
     function removeCopy(data) {
