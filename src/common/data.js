@@ -156,8 +156,8 @@ Full:
 
 Footwear:
 	- custom: {text-custom}:
-	- shoes: {text-additional} {color?} {shoes-flats?shoes-heels}:
-	- boots: {text-additional} {color?} {boots}:
+	- shoes: {footwear-variants?} {text-additional} {color?} {shoes-flats?shoes-heels}:
+	- boots: {footwear-variants?} {text-additional} {color?} {boots}:
 
 Underwear:
 	- custom: {text-custom}:
@@ -399,6 +399,12 @@ Type:
 	- short: A short maid dress typically falls just above the knee, often reaching mid-thigh. This style is more revealing and may be preferred for warmer environments or to showcase the maid's legs.
 	- middle: A middle-length maid dress usually reaches the mid-calf or just below the knee. This is a versatile option that provides coverage while still maintaining a feminine, elegant appearance.
 	- long: A long maid dress extends to the ankles or even the floor. This style is often chosen for a more conservative or formal look, as it provides complete coverage from the waist down. Long dresses can also add a touch of vintage charm to the overall aesthetic.
+
+--footwear
+Variants:
+    - comfortable: Footwear that is soft, supportive, and non-restrictive, providing comfort during wear.
+    - stylish: Footwear that is fashionable, trendy, and designed to make a visual statement.
+    - durable: Footwear that is built to last, with sturdy materials and construction that can withstand wear and tear.
 
 --shoes
 Heels:
