@@ -14,8 +14,8 @@ Speech: {speech};
 Sex Practices and Fetishes: {sex-practices-and-fetishes};
 Relationship: {relationship};
 Appearance: {appearance-face?} + {appearance-hair?} + {hair-style?} + {appearance-eyes?} + {appearance-tall?} + {appearance-body?} + {appearance-boobs?} + {text-additional*};
-Outfit: {outfit-top?} + {outfit-full?outfit-bottom} + {outfit-footwear?} + {outfit-underwear*?} + {outfit-additional*?} + {text-additional*};
-Personality: {personality?} + {text-custom} + {text-additional*};]`;
+Outfit: {outfit-top*?} + {outfit-full?outfit-bottom} + {outfit-underwear*?} + {outfit-footwear?} + {outfit-additional*?} + {text-additional*};
+Personality: {personality} + {text-custom} + {text-additional*};]`;
 
 export const DEFAULT_RESOURCE =
 `--gender
@@ -72,8 +72,8 @@ Dislikes:
 --speech
 Speech:
     - no:
-    - text: {text-speech}:
     - variants: {speech-variants*}:
+    - text: {text-speech}:
 
 Variants:
 	- direct: Straightforward, to-the-point, and unambiguous in communication.
@@ -119,7 +119,7 @@ Hair:
 	- custom: {text-custom}:
 
 Eyes:
-	- eyes: {eyes-shape?} {eyes-expression?} {color} eyes {eyes-features?}:
+	- eyes: {eyes-expression?} {color} eyes {eyes-features?}:
 	- custom: {text-custom}:
 
 Tall:
@@ -131,7 +131,7 @@ Body:
 	- custom: {text-custom}:
 
 Boobs:
-	- boobs: {boobs-shape} {boobs-size} boobs:
+	- boobs: {boobs-shape?} {boobs-size} boobs:
 	- custom: {text-custom}:
 
 --outfit
@@ -161,9 +161,9 @@ Footwear:
 
 Underwear:
 	- custom: {text-custom}:
-	- bra: {bra-style?} {bra-features?} {color?} {material-type?} bra:
+	- bra: {bra-features?} {color?} {material-type?} {bra-style}:
 	- without bra: No bra
-	- panties: {panties-cut?panties-coverage} {panties-features?} {color?} {material-type?} panties:
+	- panties: {panties-coverage?} {panties-features?} {color?} {material-type?} {panties-cut}:
 	- without panties: No panties
 	- nightdress: {nightdress-style?} {nightdress-features?} {color?} {material-type?} nightdress:
 
@@ -179,6 +179,7 @@ Additional:
 --personality
 Personality:
     - four letters and wings: {personality-type} - {personality-wings}:
+	- custom: {text-custom}:
 
 --color
 Color:
@@ -290,13 +291,6 @@ Up-Dos:
 	- half-up half-down: A style that combines both up and down elements. The top half of the hair is secured in a bun, chignon, or ponytail, while the bottom half flows freely.
 
 --eyes
-Shape:
-	- custom: {text-custom}:
-	- almond: Eyes that are elongated and narrow, with a pointed outer corner. This shape is often associated with Asian and Middle Eastern features.
-	- round: Eyes with a circular shape, typically found in people of European and African descent. Round eyes can appear larger and more expressive.
-	- upturned: Eyes with an upward tilt at the outer corner, giving a slightly feline or innocent appearance.
-	- down-turned: Eyes with a downward tilt at the outer corner, often conveying a more serious or melancholic expression.
-
 Expression:
 	- bright: Shining with lively energy and enthusiasm, often accompanied by a warm, engaging smile.
 	- dull: Lacking luster and vitality, appearing lifeless or uninterested.
@@ -356,11 +350,9 @@ Sleeve:
 	- short sleeves: End above the elbow, leaving the forearm exposed.
 	- cap sleeves: Very short sleeves that only cover the top of the shoulder.
 
- Features:
-    - unbuttoned: The shirt is partially opened, revealing the wearer's chest and upper torso.
-    - open collar: The top buttons of the shirt are left unfastened, creating a slightly more relaxed and approachable demeanor.
-    - untucked: The shirt hangs loose outside the pants, giving a more relaxed and informal look.
-    - tucked in: The shirt is securely fastened into the pants, creating a neat and polished appearance.
+Features:
+    - open collar: The top buttons of the clothes are left unfastened, creating a slightly more relaxed and approachable demeanor.
+    - unbuttoned: The clothes is partially opened, revealing the wearer's chest and upper torso.
 
 --skirt
 Length:
@@ -429,6 +421,7 @@ Boots:
 
 --bra
 Style:
+    - bra:
 	- underwire: Features a flexible wire running along the underside of the cups to provide additional support and lift. This style helps maintain breast shape and prevents sagging.
 	- wire-free: Does not contain any underwires, instead relying on soft, padded cups for comfort and support. Wire-free bras are ideal for sensitive skin or those who prefer a more relaxed fit.
 	- minimizer: Designed to reduce the apparent size of the breasts, minimizer bras have wider, shallower cups that compress the bust. They are suitable for women who want a more modest appearance.
@@ -445,6 +438,7 @@ Features:
 
 --panties
 Cut:
+    - panties:
 	- thong: A thong is a type of panty that has a narrow strip of fabric that passes between the buttocks, typically with a small piece of fabric covering the front genital area. It provides minimal coverage and is often worn for its provocative or sensual appeal.
 	- G-string: A G-string is similar to a thong but has an even narrower strip of fabric between the buttocks, resembling the shape of the letter "G." It offers very little coverage and is designed for style rather than practicality.
 	- cheeky: Cheeky panties have a higher cut on the leg, typically reaching just above the hip bone. They provide more coverage than thongs or G-strings but still expose a significant portion of the buttocks, making them a popular choice for those who want a balance between style and modesty.
@@ -486,8 +480,8 @@ Length:
 
 --stockings
 Sheerness:
-	- sheer: Extremely thin and transparent, allowing the skin to show through.
 	- semi-sheer: Thicker than sheer but still somewhat translucent, offering a balance between coverage and visibility.
+	- sheer: Extremely thin and transparent, allowing the skin to show through.
 	- opaque: Completely solid and non-transparent, providing full coverage of the legs.
 
 Pattern:
@@ -503,19 +497,19 @@ Length:
 	- ankle: The shortest type, reaching only to the ankle bone, not covering the calf at all.
 
 Features:
-    - with garters: Stockings held up by fabric straps (garters) that wrap around the leg, typically above the knee.
 	- with suspenders: Stockings secured by fabric straps (suspenders) that connect to the waistband or a belt.
+    - with garters: Stockings held up by fabric straps (garters) that wrap around the leg, typically above the knee.
 	- with waistband: Stockings have an elastic or fabric band that encircles the natural waist for support and stability.
     - with top band: A narrow, usually elastic band at the top of the stocking, often used in combination with garters or suspenders.
 
 --choker
 Material:
+	- lace: A delicate, intricate fabric often associated with feminine, romantic styles. Lace chokers can add a whimsical, vintage flair to an ensemble.
+    - chain: A classic, versatile material for chokers that can range from simple and minimalist to ornate and statement-making. Chain chokers work well with both casual and formal attire.
 	- velvet: A soft, luxurious fabric often used for high-end or formal chokers. Velvet chokers can add a touch of elegance and sophistication to an outfit.
 	- satin: A smooth, shiny fabric commonly used for evening wear or special occasions. Satin chokers can create a glamorous, eye-catching look.
-	- lace: A delicate, intricate fabric often associated with feminine, romantic styles. Lace chokers can add a whimsical, vintage flair to an ensemble.
 	- leather: A durable, edgy material suitable for casual or punk-inspired outfits. Leather chokers can make a bold fashion statement.
 	- velvet ribbon: A wide, soft ribbon made from velvet, often used for more relaxed, bohemian or rustic looks. Velvet ribbon chokers can add a cozy, laid-back feel.
-	- chain: A classic, versatile material for chokers that can range from simple and minimalist to ornate and statement-making. Chain chokers work well with both casual and formal attire.
 
 --jewelry
 Type:
