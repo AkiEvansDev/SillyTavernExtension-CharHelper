@@ -268,7 +268,7 @@ Structure:
 Features:
 	- custom: {text-custom}:
 	- color ends: with {color} ends:
-	- streaks: with {color} streaks:
+	- strands: with {color} strands:
 	- gradient: with {color} gradient:
 
 Style:
