@@ -73,9 +73,9 @@ Dislikes:
 Speech:
     - no:
     - variants: {speech-variants*}:
-    - text: {text-speech}:
 
 Variants:
+	- custom: {text-custom}:
 	- direct: Straightforward, to-the-point, and unambiguous in communication.
 	- indirect: Subtle, hinting, and often using circumlocution or euphemisms.
 	- formal: Polite, precise, and adhering to strict linguistic conventions.
@@ -479,6 +479,7 @@ Sheerness:
 	- opaque: Completely solid and non-transparent, providing full coverage of the legs.
 
 Pattern:
+    - lace: A delicate, intricate fabric pattern woven from yarn or thread, often used for a romantic or sensual look.
 	- fishnet: A mesh-like fabric with a grid pattern, often worn for a more provocative or fetish-inspired look, particularly with revealing clothing.
 	- solid: A single, uniform color, often black, navy, or flesh-toned for everyday wear.
 	- striped: Horizontal or vertical bands of different colors, adding visual interest to outfits.
