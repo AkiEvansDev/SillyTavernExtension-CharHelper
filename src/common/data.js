@@ -148,6 +148,7 @@ Bottom:
 
 Full:
 	- custom: {text-custom}:
+	- dress: {text-additional} {color?} {material-type?} dress:
 	- long dress: {long-dress-neckline?} {color?} {material-type?} long dress:
 	- maid: {color?} {maid-type?} maid dress:
 	- tight clothes: tight {color?} {material-type?} clothes:
