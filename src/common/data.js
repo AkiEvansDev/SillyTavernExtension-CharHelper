@@ -396,6 +396,7 @@ Type:
 --footwear
 Variants:
     - comfortable: Footwear that is soft, supportive, and non-restrictive, providing comfort during wear.
+    - elegant: High-quality, luxurious footwear designed to exude refinement and poise.
     - stylish: Footwear that is fashionable, trendy, and designed to make a visual statement.
     - durable: Footwear that is built to last, with sturdy materials and construction that can withstand wear and tear.
 
@@ -418,10 +419,10 @@ Boots:
 Style:
     - bra:
 	- underwire: Features a flexible wire running along the underside of the cups to provide additional support and lift. This style helps maintain breast shape and prevents sagging.
-	- wire-free: Does not contain any underwires, instead relying on soft, padded cups for comfort and support. Wire-free bras are ideal for sensitive skin or those who prefer a more relaxed fit.
+	- wire-free bra: Does not contain any underwires, instead relying on soft, padded cups for comfort and support. Wire-free bras are ideal for sensitive skin or those who prefer a more relaxed fit.
 	- minimizer: Designed to reduce the apparent size of the breasts, minimizer bras have wider, shallower cups that compress the bust. They are suitable for women who want a more modest appearance.
 	- push-up: Intended to enhance cleavage and create the illusion of larger breasts, push-up bras have thicker padding and often a higher center gore (the part between the cups).
-	- sports: A specialized bra designed specifically for physical activity, sports bras provide extra support and stability to prevent breast movement and discomfort during exercise.
+	- sports bra: A specialized bra designed specifically for physical activity, sports bras provide extra support and stability to prevent breast movement and discomfort during exercise.
 	- bikini: A type of bra that exposes the midriff, typically worn with a thong or boyshort bottom. Bikini bras have a lower cut and shorter straps compared to traditional bras, offering a more provocative look.
     - bandeau: A minimalist, strapless or lightly-strapped bralette made of stretchy fabric that provides minimal coverage and support for the breasts.
 
@@ -436,7 +437,7 @@ Style:
     - panties:
 	- thong: A thong is a type of panty that has a narrow strip of fabric that passes between the buttocks, typically with a small piece of fabric covering the front genital area. It provides minimal coverage and is often worn for its provocative or sensual appeal.
 	- G-string: A G-string is similar to a thong but has an even narrower strip of fabric between the buttocks, resembling the shape of the letter "G." It offers very little coverage and is designed for style rather than practicality.
-	- cheeky: Cheeky panties have a higher cut on the leg, typically reaching just above the hip bone. They provide more coverage than thongs or G-strings but still expose a significant portion of the buttocks, making them a popular choice for those who want a balance between style and modesty.
+	- cheeky panties: Cheeky panties have a higher cut on the leg, typically reaching just above the hip bone. They provide more coverage than thongs or G-strings but still expose a significant portion of the buttocks, making them a popular choice for those who want a balance between style and modesty.
 	- boyshorts: Boyshorts are a style of panty that resembles men's briefs but is designed for women. They have a wider, more substantial fabric coverage compared to thongs or G-strings, providing better support and coverage for the buttocks and genital area. They often have a flat front and a curved back for a comfortable fit.
 	- hipsters: Hipster panties have a lower rise than boyshorts, typically sitting just below the hip bone. They provide more coverage than thongs or G-strings but less than boyshorts, making them a versatile option for those who want a mix of style and practicality.
 
