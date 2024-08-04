@@ -137,7 +137,8 @@ class StateManager {
                 property = 0;
             } 
         });
-
+        console.log(resources);
+        console.log(values);
         return { resources: resources, values: values, descriptions: descriptions };
     }
 

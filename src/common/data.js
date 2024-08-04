@@ -14,7 +14,7 @@ Speech: {speech};
 Sex Practices and Fetishes: {sex-practices-and-fetishes};
 Relationship: {relationship};
 Appearance: {appearance-face?} + {appearance-hair?} + {hair-style?} + {appearance-eyes?} + {appearance-tall?} + {appearance-body?} + {appearance-boobs?} + {text-additional*};
-Outfit: {outfit-top*?} + {outfit-full?outfit-bottom} + {outfit-underwear*?} + {outfit-footwear?} + {outfit-additional*?} + {text-additional*};
+Outfit: {outfit-top*?} + {outfit-full?outfit-bottom} + {outfit-underwear*?} + {outfit-additional*?} + {outfit-footwear?} + {text-additional*};
 Personality: {personality} + {text-custom} + {text-additional*};]`;
 
 export const DEFAULT_RESOURCE =
@@ -36,8 +36,8 @@ Ethnicity:
 --occupation
 Occupation:
     - no:
-    - text: {text-occupation}:
     - unemployed:
+    - text: {text-occupation}:
 
 --residence
 Residence:
@@ -139,7 +139,7 @@ Top:
 	- custom: {text-custom}:
 	- shirt: {top-neckline?} {top-sleeve?} {top-features?} {color?} shirt:
 	- blouse: {top-neckline?} {top-sleeve?} {top-features?} {color?} blouse:
-	- jacket: {text-additional} {color?} jacket:
+	- jacket: {text-additional} {top-features?} {color?} jacket:
 
 Bottom:
 	- custom: {text-custom}:
@@ -154,16 +154,11 @@ Full:
 	- armored: {text-additional} {color?} armored clothes:
     - toga: {color?} {material-type?} toga:
 
-Footwear:
-	- custom: {text-custom}:
-	- shoes: {footwear-variants?} {text-additional} {color?} {shoes-flats?shoes-heels}:
-	- boots: {footwear-variants?} {text-additional} {color?} {boots}:
-
 Underwear:
 	- custom: {text-custom}:
 	- bra: {bra-features?} {color?} {material-type?} {bra-style}:
 	- without bra: No bra
-	- panties: {panties-coverage?} {panties-features?} {color?} {material-type?} {panties-cut}:
+	- panties: {panties-coverage?} {panties-features?} {color?} {material-type?} {panties-style}:
 	- without panties: No panties
 	- nightdress: {nightdress-style?} {nightdress-features?} {color?} {material-type?} nightdress:
 
@@ -175,6 +170,11 @@ Additional:
 	- choker: {text-additional} {choker-material?} {color?} choker:
 	- jewelry: {text-additional} {jewelry-type}:
 	- bare: {bare-type}:
+
+Footwear:
+	- custom: {text-custom}:
+	- shoes: {footwear-variants?} {text-additional} {color?} {shoes}:
+	- boots: {footwear-variants?} {text-additional} {color?} {boots}:
 
 --personality
 Personality:
@@ -399,18 +399,12 @@ Variants:
     - durable: Footwear that is built to last, with sturdy materials and construction that can withstand wear and tear.
 
 --shoes
-Heels:
+Shoes:
+	- shoes: Closed-toe, low-heeled shoes suitable for everyday wear.
 	- stilettos: Extremely thin, long heels, typically 3 inches (7.6 cm) or more, providing a dramatic, elegant look.
 	- pumps heels: Classic, closed-toe heels, usually 2-3 inches (5-7.6 cm) high, designed for formal or business attire.
 	- kitten heels: Short, low heels, typically 1-2 inches (2.5-5 cm) high, offering a more modest, versatile alternative to higher heels.
 	- block heels: Heels with a thicker, solid block of material, often 2-4 inches (5-10 cm) high, providing stability and a modern aesthetic.
-
-Flats:
-	- shoes: Closed-toe, low-heeled shoes suitable for everyday wear.
-	- loafers: Slip-on shoes with no laces or buckles, often made of leather.
-	- ballet flats: Soft, lightweight shoes with a round or square toe, inspired by ballet dancing.
-	- mules: Shoes with no back or heel strap, typically worn with dresses or skirts.
-	- sandals: Footwear that exposes the foot and toes, often held on by straps or thongs.
 
 --boots
 Boots:
@@ -437,7 +431,7 @@ Features:
 	- armored: In fantastical contexts, an armored bra might refer to a magical or protective undergarment that enhances the wearer's physical attributes or provides additional defense against attacks.
 
 --panties
-Cut:
+Style:
     - panties:
 	- thong: A thong is a type of panty that has a narrow strip of fabric that passes between the buttocks, typically with a small piece of fabric covering the front genital area. It provides minimal coverage and is often worn for its provocative or sensual appeal.
 	- G-string: A G-string is similar to a thong but has an even narrower strip of fabric between the buttocks, resembling the shape of the letter "G." It offers very little coverage and is designed for style rather than practicality.
@@ -513,8 +507,8 @@ Material:
 
 --jewelry
 Type:
-	- earrings: Small decorative items worn on or in the ears, often made of precious metals, gemstones, or other materials.
 	- ring: Circular piece of jewelry worn on the fingers or sometimes on other parts of the body, typically made of metal and sometimes featuring gemstones.
+	- earrings: Small decorative items worn on or in the ears, often made of precious metals, gemstones, or other materials.
     - necklace: A piece of jewelry worn around the neck, often made of a chain or cord with a pendant or other decorative elements attached.
 
 --bare

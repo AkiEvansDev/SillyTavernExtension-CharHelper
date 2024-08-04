@@ -1,3 +1,5 @@
+import { S } from "../../../../../lib/handlebars";
+
 class Helper {
     static titleCase(str) {
         str = str.trim().replaceAll('-', ' ');
@@ -74,6 +76,9 @@ class Helper {
                     run = true;
             });
         }
+
+        if (str.startsWith(' ' + separator + ' '))
+            str = str.substring(3);
 
         return str.trim();
     }

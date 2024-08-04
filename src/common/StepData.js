@@ -214,9 +214,6 @@ class StepData {
         if (result === 'none') {
             return '';
         }
-        
-        if (this.values[result])
-            return this.values[result];
 
         if (item['subGroups'].length > 0) {
             let subGroupId = item['id'] + '-' + result;
@@ -225,6 +222,8 @@ class StepData {
             if (subGroup && subGroup.length === 1) {
                 result = this.getGroupResult(subGroup[0]);
             }
+        } else if (this.values[result]) {
+            return this.values[result];
         }
         
         return result;
