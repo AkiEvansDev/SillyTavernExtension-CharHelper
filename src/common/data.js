@@ -322,6 +322,11 @@ Shape:
 	- teardrop: Elongated, with a wider base and a narrower, pointed top, typically found on medium to larger busts.
 
 Size:
+Default:
+    - medium:
+    - small:
+    - big:
+    - large:
 Medium:
 	- D size: Full and rounded, providing ample cleavage without being overly large.
 	- DD size: Noticeably larger than D-cup, offering generous curves and deep cleavage.
