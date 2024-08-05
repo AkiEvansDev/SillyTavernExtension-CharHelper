@@ -8,8 +8,8 @@ import StepData from './StepData'
 const DEFAULT = {
     template: DEFAULT_TEMPLATE,
     resource: DEFAULT_RESOURCE,
-    translate: 'true',
     separator: '+',
+    showHelpBtn: true
 };
 
 export const TEMPLATE_KEY_REGEX = /^[\w ]*:/g;
@@ -23,7 +23,7 @@ class StateManager {
         const context = SillyTavern.getContext();
         var result = _.get(context, `extensionSettings.charHelper.${name}`, null);
 
-        if (!result)
+        if (result === null)
             result = DEFAULT[name];
 
         return result;
@@ -137,8 +137,7 @@ class StateManager {
                 property = 0;
             } 
         });
-        console.log(resources);
-        console.log(values);
+
         return { resources: resources, values: values, descriptions: descriptions };
     }
 

@@ -1,4 +1,4 @@
-function Description({ id, description, stepData, text }) {
+function Description({ id, description, stepData }) {
     let wait = false;
 
     async function translate() {
@@ -32,7 +32,7 @@ function Description({ id, description, stepData, text }) {
         <div class="charHelperDataDescription">
             <small id={id + '-description-text'}>{stepData.descriptions[description + '-' + stepData.save[id]]}</small>
             <small id={id + '-description-text-translate'}></small>
-            <div id={id + '-description-text-translate-btn'} class="menu_button interactable fa-solid fa-language" style={(text && text.length > 0 ? {} : { display: 'none' })} onClick={() => translate()}></div>
+            <div id={id + '-description-text-translate-btn'} class="menu_button interactable fa-solid fa-language" onClick={() => translate()}></div>
         </div>
     );
 }

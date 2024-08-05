@@ -48,3 +48,18 @@
     margin-top: 0.4em;
     margin-bottom: 0.4em;
 }
+
+#send_form_help_btn_container {
+    margin-left: auto;
+    margin-right: 1%;
+}
+
+#send_form_help_btn_container > .menu_button {
+    font-size: 12px;
+    padding: 0px 5px 2px 5px;
+}
+
+#send_form_help_btn_container > .menu_button:focus-visible {
+    background-color: var(--black50a) !important;
+    outline: 0px solid var(--interactable-outline-color) !important;
+}

@@ -5,7 +5,7 @@ import StateManager from './common/StateManager';
 function Settings() {
     const [template, setTemplate] = useState(StateManager.getData('template'));
     const [resource, setResource] = useState(StateManager.getData('resource'));
-    const [translate, setTranslate] = useState(StateManager.getData('translate'));
+    const [showHelpBtn, setShowHelpBtn] = useState(StateManager.getData('showHelpBtn'));
 
     const handleChangeTemplate = (event) => {
         setTemplate(event.target.value);
@@ -17,9 +17,17 @@ function Settings() {
         StateManager.setData('resource', event.target.value);
     };
 
-    const handleChangeTranslate = (event) => {
-        setTranslate(event.target.value);
-        StateManager.setData('translate', event.target.value);
+    const handleChangeShowHelpBtn = (event) => {
+        setShowHelpBtn(event.target.checked);
+        StateManager.setData('showHelpBtn', event.target.checked);
+        
+        var element = document.getElementById('send_form_help_btn_container');
+
+        if (event.target.checked === true) {
+            element.style = '';
+        } else {
+            element.style = 'display: none;';
+        }
     };
 
     const restoreTemplate = () => {
@@ -54,9 +62,9 @@ function Settings() {
                         </div>
                     </label>
                     <textarea id="char_helper_settings_resource" type="text" class="text_pole textarea_compact" rows="10" placeholder="" value={resource} onChange={handleChangeResource}></textarea>
-                    <label class="checkbox_label" for="char_helper_translate">
-                        <input type="checkbox" id="char_helper_settings_translate" checked={translate} onChange={handleChangeTranslate} />
-                        <span>Translate description</span>
+                    <label class="checkbox_label" for="char_helper_show_help_btn">
+                        <input type="checkbox" id="char_helper_show_help_btn" checked={showHelpBtn} onChange={handleChangeShowHelpBtn} />
+                        <span>Show help input buttons</span>
                     </label>
                 </div>
             </div>
