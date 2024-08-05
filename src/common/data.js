@@ -159,7 +159,7 @@ Underwear:
 	- custom: {text-custom}:
 	- bra: {bra-features?} {color?} {material-type?} {bra-style}:
 	- without bra: No bra
-	- panties: {panties-coverage?} {panties-features?} {color?} {material-type?} {panties-style}:
+	- panties: {panties-features?} {color?} {material-type?} {panties-style}:
 	- without panties: No panties
 	- nightdress: {nightdress-style?} {nightdress-features?} {color?} {material-type?} nightdress:
 
@@ -445,11 +445,6 @@ Style:
 	- cheeky panties: Cheeky panties have a higher cut on the leg, typically reaching just above the hip bone. They provide more coverage than thongs or G-strings but still expose a significant portion of the buttocks, making them a popular choice for those who want a balance between style and modesty.
 	- boyshorts: Boyshorts are a style of panty that resembles men's briefs but is designed for women. They have a wider, more substantial fabric coverage compared to thongs or G-strings, providing better support and coverage for the buttocks and genital area. They often have a flat front and a curved back for a comfortable fit.
 	- hipsters: Hipster panties have a lower rise than boyshorts, typically sitting just below the hip bone. They provide more coverage than thongs or G-strings but less than boyshorts, making them a versatile option for those who want a mix of style and practicality.
-
-Coverage:
-	- low coverage: Minimal fabric, often sheer or mesh, providing a barely-there feel while still offering some discreetness.
-	- mid coverage: Standard panties with a moderate amount of fabric that covers the essential areas without being too revealing or constricting.
-	- full coverage: High-waisted or boyshort-style panties that extend higher on the waist and provide more comprehensive coverage.
 
 Features:
 	- lace: A delicate, intricate fabric pattern woven from yarn or thread, often used in feminine undergarments for a romantic or sensual look.
