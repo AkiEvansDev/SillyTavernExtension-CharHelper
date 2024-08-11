@@ -285,7 +285,7 @@ Twin Tails:
 	- twin ponytails: Similar to regular ponytails, but with two separate ones, one on each side of the head.
 	- twin buns: Two small buns, one on each side of the head, often adorned with hairpins or other decorative elements.
 	- twin pigtails: Twin versions of the classic pigtail, where the hair is divided into two sections and twisted into tight, rounded buns.
-Up-Dos:
+Other:
 	- bun: A versatile updo where the hair is coiled and secured at the top of the head, often with bobby pins or a hair tie.
 	- chignon: A low, sleek bun typically worn at the back of the head, often with a center part.
 	- crown braid: A braided updo that starts at the crown of the head and weaves its way down, often ending in a small bun or loose tail.
