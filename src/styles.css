@@ -1,3 +1,7 @@
+.charHelperPanel {
+    padding: 10px;
+}
+
 .charHelperDataDescription {
     display: flex;
     margin-top: 2px !important;

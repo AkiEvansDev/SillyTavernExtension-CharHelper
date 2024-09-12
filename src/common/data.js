@@ -192,6 +192,7 @@ Color:
     - purple: #A020F0:
     - blue: #0000FF:
     - green: #00FF00:
+    - brown: #895129:
     - white: #FFFFFF:
     - grey: #AAAAAA:
 	- black: #000000:
