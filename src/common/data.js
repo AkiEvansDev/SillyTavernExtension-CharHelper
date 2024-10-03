@@ -6,13 +6,10 @@ Age: {number-age};
 Occupation: {occupation};
 Residence: {residence};
 Skills: {skills};
-Story: {story};
 Secret: {secret};
 Likes: {likes};
 Dislikes: {dislikes};
-Speech: {speech};
 Sex Practices and Fetishes: {sex-practices-and-fetishes};
-Relationship: {relationship};
 Appearance: {appearance-face?} + {appearance-hair?} + {hair-style?} + {appearance-eyes?} + {appearance-tall?} + {appearance-body?} + {appearance-boobs?} + {text-additional*};
 Outfit: {outfit-top*?} + {outfit-full?outfit-bottom} + {outfit-underwear*?} + {outfit-additional*?} + {outfit-footwear?} + {text-additional*};
 Personality: {personality} + {text-custom} + {text-additional*};]`;
@@ -49,11 +46,6 @@ Skills:
     - no:
     - text: {text-skills}:
 
---story
-Story:
-    - no:
-    - text: {text-story}:
-
 --secret
 Secret:
     - no:
@@ -69,45 +61,10 @@ Dislikes:
     - no:
     - text: {text-dislikes}:
 
---speech
-Speech:
-    - no:
-    - variants: {speech-variants*}:
-
-Variants:
-	- custom: {text-custom}:
-	- direct: Straightforward, to-the-point, and unambiguous in communication.
-	- indirect: Subtle, hinting, and often using circumlocution or euphemisms.
-	- formal: Polite, precise, and adhering to strict linguistic conventions.
-	- informal: Casual, colloquial, and often using slang or colloquialisms.
-	- sarcastic: Using irony, understatement, or mocking tone to convey a message.
-	- rhetorical: Emphasizing style and persuasive techniques over literal meaning.
-	- concise: Using the fewest words necessary to convey the intended message.
-	- elaborate: Providing detailed, extensive explanations or descriptions.
-	- humorous: Incorporating wit, irony, or playful language for comedic effect.
-	- authoritative: Speaking with confidence, assertiveness, and a commanding presence.
-	- confrontational: Engaging in arguments or discussions with a challenging, sometimes aggressive tone.
-	- empathetic: Expressing understanding, compassion, and emotional support in speech.
-	- persuasive: Using language to influence opinions, beliefs, or actions.
-	- whimsical: Incorporating playful, fanciful, or nonsensical elements in speech for creative effect.
-	- toxic: Using speech to manipulate, gaslight, or belittle others, often with malicious intent.
-	- uncensored: forthrightly expressing thoughts and opinions without restraint or tact, potentially causing offense.
-	- blunt: Speaking honestly and straightforwardly, often without concern for others' feelings.
-	- candor: Openness, honesty, and sincerity in communication.
-	- clarity: Articulating thoughts clearly and effectively, with minimal confusion.
-	- eloquence: Fluent, persuasive, and captivating speech, often with a touch of artistry.
-	- mannered: Adopting a distinctive, often affected or artificial, speech pattern.
-	- vivacious: Speaking with energy, enthusiasm, and a lively, engaging personality.
-
 --sex
 Practices and Fetishes:
     - no:
     - text: {text-sex}:
-
---relationship
-Relationship:
-    - no:
-    - text: {text-relationship}:
 
 --appearance
 Face:

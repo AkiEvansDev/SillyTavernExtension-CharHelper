@@ -145,6 +145,11 @@ class StateManager {
         let result = await translate(text);
         return result;
     }
+
+    static async translateTextEn(text) {
+        let result = await translate(text, 'en');
+        return result;
+    }
 }
 
 export default StateManager;

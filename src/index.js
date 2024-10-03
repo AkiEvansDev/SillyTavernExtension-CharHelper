@@ -57,9 +57,6 @@ function insertChar(char) {
     var end = textarea.selectionEnd;
     var text = textarea.value;
 
-    console.log(start);
-    console.log(end);
-
     if (start !== end && (char === '"' || char === '*')) {
         textarea.value = text.substring(0, start) + char + text.substring(start, end) + char + text.substring(end);
         end += char.length;
@@ -85,7 +82,7 @@ if (StateManager.getData('showHelpBtn') === false)
 
 inputContainer.insertBefore(inputButtonContainer, inputContainer.firstChild);
 
-const chars = ['{{char}}', '{{user}}', '[', ']', '"', '*'];
+const chars = ['{{char}}', '{{user}}', '[', ']', '"', '*', '-', ':', '\'s'];
 
 for (let i = 0; i < chars.length; ++i) {
     let iconButtonElement = document.createElement('i');
@@ -96,7 +93,17 @@ for (let i = 0; i < chars.length; ++i) {
     inputButtonContainer.appendChild(iconButtonElement);
 
     iconButtonElement.addEventListener('click', function () {
-        insertChar(chars[i]);
         iconButtonElement.blur();
+        insertChar(chars[i]);
     });
 }
+
+let translateButtonElement = document.createElement('i');
+
+translateButtonElement.classList.add('menu_button', 'interactable', 'fa-solid', 'fa-language');
+inputButtonContainer.appendChild(translateButtonElement);
+
+translateButtonElement.addEventListener('click', async function () {
+    let textarea = document.getElementById('send_textarea');
+    textarea.value = await StateManager.translateTextEn(textarea.value);
+});
